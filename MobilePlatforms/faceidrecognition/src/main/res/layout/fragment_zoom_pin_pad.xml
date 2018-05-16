@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:text="@string/zoom_sdk_icon_close"
+        android:contentDescription="Back button"
+        android:gravity="center"
+        android:textSize="43sp"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <FrameLayout
+        android:id="@+id/pinPadInputHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pinGrid"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/pinPadInputHolder"
+        android:orientation="vertical"
+        android:paddingTop="35dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button style="@style/zoom_pin_pad_button_left" android:text="1" android:id="@+id/buttonOne"
+                tools:ignore="HardcodedText" />
+            <Button style="@style/zoom_pin_pad_button_middle" android:text="2" android:id="@+id/buttonTwo"
+                tools:ignore="HardcodedText" />
+            <Button style="@style/zoom_pin_pad_button_right" android:text="3" android:id="@+id/buttonThree"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <Button style="@style/zoom_pin_pad_button_left" android:text="4" android:id="@+id/buttonFour"
+                tools:ignore="HardcodedText" />
+            <Button style="@style/zoom_pin_pad_button_middle" android:text="5" android:id="@+id/buttonFive"
+                tools:ignore="HardcodedText" />
+            <Button style="@style/zoom_pin_pad_button_right" android:text="6" android:id="@+id/buttonSix"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <Button style="@style/zoom_pin_pad_button_left" android:text="7" android:id="@+id/buttonSeven"
+                tools:ignore="HardcodedText" />
+            <Button style="@style/zoom_pin_pad_button_middle" android:text="8" android:id="@+id/buttonEight"
+                tools:ignore="HardcodedText" />
+            <Button style="@style/zoom_pin_pad_button_right" android:text="9" android:id="@+id/buttonNine"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <Button style="@style/zoom_pin_pad_button_left" android:text="@string/zoom_pin_delete" android:visibility="invisible" />
+            <Button style="@style/zoom_pin_pad_button_middle" android:text="0" android:id="@+id/buttonZero"
+                tools:ignore="HardcodedText" />
+            <TextView style="@style/zoom_pin_pad_button_delete" android:text="@string/zoom_pin_delete" android:id="@+id/buttonDelete"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,260 @@
+<!--
+  ~  Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License");
+  ~  you may not use this file except in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~      https://mindorks.com/license/apache-v2
+  ~
+  ~  Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS,
+  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  See the License for the specific language governing permissions and
+  ~  limitations under the License
+  -->
+
+<resources>
+    <string name="app_name">Vietnam State Treasury</string>
+
+    <!--Toolbar menus-->
+    <string name="clear">Clear</string>
+    <string name="cut">Cut</string>
+    <string name="copy">Copy</string>
+    <string name="paste">Paste</string>
+    <string name="delete">Delete</string>
+    <string name="share">Share</string>
+
+    <!--Drawer-->
+    <string name="open_drawer">Drawer Open</string>
+    <string name="close_drawer">Drawer Close</string>
+
+    <!--Drawer Menus-->
+    <string name="about">About</string>
+    <string name="logout">Logout</string>
+    <string name="feed">My Feed</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+
+    <!-- Navigation Drawer menu labels -->
+    <string name="bottom_navigation_home">Home</string>
+    <string name="bottom_navigation_message">Message</string>
+    <string name="nav_movies">Movies</string>
+    <string name="nav_notifications">Notifications</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_about_us">About Us</string>
+
+    <!-- Toolbar titles when navigation menu item is selected -->
+    <string-array name="nav_item_activity_titles">
+        <item>Home</item>
+        <item>Photos</item>
+        <item>Movies</item>
+        <item>Notifications</item>
+        <item>Settings</item>
+    </string-array>
+
+    <string name="activity_title_about_us">About Us</string>
+    <string name="activity_title_privacy_policy">Privacy Policy</string>
+    <string name="action_clear_all">Clear All</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_mark_all_read">Mark All as Read</string>
+    <string name="privacy_policy">Privacy Policy</string>
+
+    <!--App Message-->
+    <string name="api_retry_error">Please retry!</string>
+    <string name="api_default_error">Something wrong happened!</string>
+    <string name="some_error">Some Error Occurred!</string>
+    <string name="connection_error">Internet connection lost!</string>
+
+    <!--Change Password-->
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_password_button">Confirm</string>
+    <string name="password_policy"><![CDATA[<html><p>Mật khẩu có phân biệt chữ hoa, chữ thường và phải thỏa mã các điều kiện sau:</p><p>* Có độ dài từ 8-20 ký tự..</p><p>* Có chứa ít nhất <span style="color: #ff0000;">01 ký tự số</span>, <span style="color: #ff0000;">01 ký tự chữ</span> và <span style="color: #ff0000;">01 ký tự viết hoa</span> hoặc <span style="color: #ff0000;">01 ký tự đặc biệt</span>.</p></html>]]></string>
+
+    <!--Login-->
+    <string name="login_dummy">Login Dummy</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="account">Account</string>
+    <string name="password">Password</string>
+    <string name="login_error">Login failed. Please check your info</string>
+    <string name="login_error_warning">Warning</string>
+
+    <!--Login Validation-->
+    <string name="invalid_email_password">Your email address and password is invalid.</string>
+    <string name="invalid_email">Your email address is invalid.</string>
+    <string name="invalid_account">Your account is invalid.</string>
+    <string name="invalid_password">Your password is invalid.</string>
+
+    <!-- Change Password -->
+    <string name="old_password_empty_message">Old password field can not be empty</string>
+    <string name="new_password_empty_message">New password field can not be empty</string>
+    <string name="confirm_password_empty_message">Confirm password field can not be empty</string>
+    <string name="new_password_invalidate_message">Incorrect password</string>
+    <string name="confirm_password_invalidate_message">Incorrect password</string>
+    <string name="choose_different_password_than_old_password">Mật khẩu mới phải khác với mật khẩu cũ</string>
+    <string name="password_confirmation_password_do_not_match">Your password and confirmation password do not match</string>
+
+    <!-- Profile -->
+    <string name="full_name">FullName</string>
+    <string name="profile_email">Email</string>
+    <string name="profile_position">Position</string>
+    <string name="profile_department">Department</string>
+    <string name="profile_phone">Phone</string>
+    <string name="profile_mobile">Mobile</string>
+    <string name="profile_address">Address</string>
+
+    <!--Register-->
+    <string name="register_application">Register Application</string>
+    <string name="register_organization_label">Organization Information</string>
+    <string name="register_organization_name">Organization</string>
+    <string name="register_organization_address">Address</string>
+    <string name="register_organization_website">Website</string>
+    <string name="register_organization_telephone">Telephone</string>
+    <string name="register_label">Register Information</string>
+    <string name="register_account">Account</string>
+    <string name="register_password">Password</string>
+    <string name="register_confirm_password">Confirm Password</string>
+    <string name="register_profile_label">Profile Information</string>
+    <string name="register_full_name">FullName</string>
+    <string name="register_email">Email</string>
+    <string name="register_phone">Phone</string>
+    <string name="register_mobile">Mobile</string>
+    <string name="register_address">Address</string>
+    <string name="register_use_module">Module</string>
+    <string name="register_button_text">Register</string>
+    <string name="register_question">Have an account?</string>
+    <string name="register_not_robot">I\'m not a robot</string>
+    <string name="register_not_be_empty">Field can\'t be empty</string>
+    <string name="register_invalid_email">"This doesn't look like a valid email address"</string>
+    <string name="register_invalid_phone">"This doesn't look like a valid phone number"</string>
+    <string name="register_confirm_password_invalidate_message">Incorrect password</string>
+    <string name="register_password_invalidate_message">Incorrect password</string>
+    <string name="register_error">Register failed. Please check your info</string>
+    <string name="register_error_warning">Warning</string>
+    <string name="register_title_notification">Notification</string>
+    <string name="register_notification_successfully">You have been successfully registered! Now you can login to system.</string>
+
+    <!--Check App Update-->
+    <string name="button_text_message_update_apk">Update.</string>
+    <string name="you_are_updated_title">The app is already updated</string>
+    <string name="you_are_not_updated_title">The app is not updated</string>
+    <string name="you_are_updated_message">Your app is already updated to the latest version available.\nPress OK to exit.</string>
+    <string name="you_are_not_updated_message">Press YES to update the app on Google Play, press NO to exit.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <!--account balance-->
+    <string name="lookup_account_balance">Lookup Account Balance</string>
+    <string name="lookup">Lookup</string>
+    <string name="lookup_from_date">From Date</string>
+    <string name="lookup_to_date">To Date</string>
+    <string name="lookup_order">Order</string>
+    <string name="lookup_date_change">Date</string>
+    <string name="lookup_balance">Balance</string>
+
+
+    <!--lookup document -->
+    <string name="lookup_document_balance">Lookup Document Balance</string>
+    <string name="lookup_document">Lookup</string>
+    <string name="lookup_document_from_date">From Date</string>
+    <string name="lookup_document_to_date">To Date</string>
+    <string name="lookup_document_date">Date</string>
+    <string name="lookup_document_file_code">File Code</string>
+    <string name="lookup_document_status">Status</string>
+
+    <!-- reminder-->
+    <string name="reminder_code">Code</string>
+    <string name="reminder_name">Name</string>
+    <string name="reminder_no_register">No register</string>
+
+
+    <!-- lookup register-->
+    <string name="lookup_register_order_number">Order Number</string>
+    <string name="lookup_register_registration_date">Registration Date</string>
+    <string name="lookup_register_full_name">Full Name</string>
+    <string name="lookup_register_user_name">User Name</string>
+    <string name="lookup_register_organization_name">Organization Name</string>
+    <string name="lookup_register_status">Status</string>
+    <string name="lookup_register_button_wait_accept">Accept</string>
+    <string name="lookup_register_button_wait_approval">Approval</string>
+    <string name="lookup_register_button_wait_reject">Reject</string>
+    <string name="lookup_register_field_not_be_empty">Field can\'t be empty</string>
+
+    <!-- process register-->
+    <string name="process_register_order_number">Order Number</string>
+    <string name="process_register_registration_date">Registration Date</string>
+    <string name="process_register_full_name">Full Name</string>
+    <string name="process_register_user_name">User Name</string>
+    <string name="process_register_organization_name">Organization Name</string>
+    <string name="process_register_status">Status</string>
+    <string name="process_register_button_wait_accept">Accept</string>
+    <string name="process_register_button_wait_reject">Reject</string>
+    <string name="process_register_button_wait_approval">Approval</string>
+    <string name="process_register_field_not_be_empty">Field can\'t be empty</string>
+    <string name="process_register_dialog_title_confirm">Confirm</string>
+    <string name="process_register_dialog_message_approval_confirm">Are you sure to approval?</string>
+    <string name="process_register_dialog_message_reject_confirm">Are you sure to reject?</string>
+
+    <!--about fragment-->
+    <string name="project_info">This sample app implements MVVM architecture using Dagger2, GreenDao, RxJava, FastAndroidNetworking and PlaceholderView</string>
+    <string name="link_mvvm_blog">1. https://blog.mindorks.com</string>
+    <string name="link_mvvm_repo">2. https://github.com/MindorksOpenSource/android-mvvm-architecture</string>
+    <string name="link_mindorks_blog">3. https://blog.mindorks.com</string>
+    <string name="link_mindorks_repo">4. https://github.com/MindorksOpenSource</string>
+    <string name="version">"version"</string>
+
+    <!--rating dialog-->
+    <string name="rate_us">Rate Us</string>
+    <string name="rating_message">Please let us know, how can we improve ourselves?</string>
+    <string name="rating_play_store_redirect_message_line_1">Awesome! Thank you for the 5 stars.</string>
+    <string name="rating_play_store_redirect_message_line_2">Please help others, in knowing some good things about this app.</string>
+    <string name="rating_play_store_text">Rate us on Play Store</string>
+    <string name="rating_not_provided_error">Please provide us stars.</string>
+    <string name="rating_thanks">Thank you!</string>
+
+    <!--play store-->
+    <string name="app_google_play_store_link">"https://play.google.com/store/apps/details?id="</string>
+    <string name="app_market_link">"market://details?id="</string>
+
+    <!--button-->
+    <string name="later">Later</string>
+    <string name="submit">Submit</string>
+
+    <!--feed-->
+    <string name="title">My Feed</string>
+    <string name="open_source">Open Source</string>
+    <string name="blog">Blog</string>
+
+    <!--empty state-->
+    <string name="empty_screen">We do not have anything\nhere right now.</string>
+    <string name="please_retry">Please Retry</string>
+    <string name="retry">Retry</string>
+
+    <!--empty state-->
+    <string name="forgot_password_button">Forgot Password</string>
+    <string name="forgot_password_label">Forgot Password</string>
+    <string name="sign_up_label">SignUp</string>
+
+    <string name="personal_information">Personal Information</string>
+    <string name="change_your_password">Change Password</string>
+    <string name="public_relation_budget">Public Relation Budget</string>
+    <string name="navigation_reminder_register">Reminder Register</string>
+    <string name="list_function_of_application">List Application</string>
+    <string name="share_information">Share information</string>
+    <string name="help_tutorial">Help</string>
+    <string name="sign_out">Sign out</string>
+
+    <string name="navigation_registration_process">Registration process</string>
+    <string name="navigation_registration_lookup">Registration lookup</string>
+    <string name="navigation_lookup_processing_registration">Lookup/Processing Registration</string>
+
+    <string name="rationale_title">Permission required</string>
+    <string name="rationale_message">we need permission for read <b>contact</b> and find your <b>location</b></string>
+
+</resources>

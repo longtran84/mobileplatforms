@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportHeight="120"
+    android:viewportWidth="120">
+
+    <path
+        android:name="pathCircle"
+        android:strokeLineCap="square"
+        android:pathData="M60,2a58,58 0 1,1 0,116a58,58 0 1,1 0,-116"
+        android:strokeColor="#fff"
+        android:strokeWidth="4"/>
+
+    <path
+        android:name="pathCheck"
+        android:strokeLineCap="square"
+        android:pathData="M31.44,62.59L49.556,80.607L88.555,41.39"
+        android:strokeColor="#fff"
+        android:strokeWidth="5"/>
+
+</vector>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License");
+  ~  you may not use this file except in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~      https://mindorks.com/license/apache-v2
+  ~
+  ~  Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS,
+  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  See the License for the specific language governing permissions and
+  ~  limitations under the License
+  -->
+
+<resources>
+    <!-- BLACK ALPHA -->
+    <color name="black00">#05000000</color>
+    <color name="black05">#0d000000</color>
+    <color name="black10">#1a000000</color>
+    <color name="black15">#26000000</color>
+    <color name="black20">#33000000</color>
+    <color name="black25">#40000000</color>
+    <color name="black30">#4d000000</color>
+    <color name="black35">#59000000</color>
+    <color name="black40">#66000000</color>
+    <color name="black45">#73000000</color>
+    <color name="black50">#80000000</color>
+    <color name="black55">#8c000000</color>
+    <color name="black60">#99000000</color>
+    <color name="black65">#a6000000</color>
+    <color name="black70">#b3000000</color>
+    <color name="black75">#bf000000</color>
+    <color name="black80">#cc000000</color>
+    <color name="black85">#d9000000</color>
+    <color name="black90">#e6000000</color>
+    <color name="black95">#f2000000</color>
+    <color name="black">@android:color/black</color>
+
+    <color name="colorPrimary">#163178</color>
+    <color name="colorPrimaryDark">#163178</color>
+    <color name="colorAccent">#163178</color>
+    <color name="light_gray">#dbdbdb</color>
+    <color name="gray">#7e7e7e</color>
+    <color name="semi_gray">#979797</color>
+    <color name="dark_gray">#696969</color>
+    <color name="bg_color">#f7f7f7</color>
+    <color name="white">#ffffff</color>
+    <color name="black_effective">#2a2a2a</color>
+    <color name="shadow">#d0d8dc</color>
+    <color name="transparent">#00000000</color>
+    <color name="translucent_white">#88ffffff</color>
+    <color name="fb">#3b5998</color>
+    <color name="google">#d34836</color>
+
+    <!--Design colors-->
+    <color name="red_dark">#F06423</color>
+    <color name="red_dark2">#D85A1B</color>
+    <color name="cyan_light">#c9ebee</color>
+    <color name="cyan">#b5e3e7</color>
+    <color name="cyan_dark">#70BDC6</color>
+    <color name="navy_blue">#214258</color>
+    <color name="navy_blue_dark">#1C3A4E</color>
+    <color name="light_green">#78DC96</color>
+    <color name="light_blue">#55C8F0</color>
+    <color name="blue_black_dark">#13171d</color>
+    <color name="blue_black_light">#516179</color>
+    <color name="blue_grey_light">#A5B4C8</color>
+    <color name="orange">#FFA500</color>
+    <color name="yellow">#fff44f</color>
+
+    <color name="color_hyperlink">#1c3e96</color>
+    <color name="common_blur_alpha_effect">#4d000000</color>
+</resources>

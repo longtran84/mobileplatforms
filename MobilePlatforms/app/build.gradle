@@ -1,0 +1,209 @@
+apply plugin: 'com.android.application'
+apply from: '../config/quality/quality.gradle'
+
+repositories {
+    maven { url "http://dl.bintray.com/populov/maven" }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+
+    mavenCentral()
+
+    flatDir {
+        dirs "../faceidrecognition/libs"
+    }
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "vn.fintechviet.mobileplatforms"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://newsapi.org/v2/\"")
+            buildConfigField("String", "END_POINT", "\"http://192.168.100.226:8080/\"")
+            buildConfigField("String", "API_KEY", "\"01a1c7f0a67344e89229a6d20f3eedbb\"")
+            buildConfigField "boolean", "SYSTEM_APP_ENABLED", "true"
+            buildConfigField "boolean", "DEBUG_MODE_ENABLED", "true"
+            // AGENT_PACKAGE: If a modification of the agent's package name is done, this must be
+            // altered
+            buildConfigField "String", "AGENT_PACKAGE", "\"vn.fintechviet.mobileplatforms\""
+            // The time the alarm should first go off, in milliseconds.
+            buildConfigField "int", "DEFAULT_START_TIME", "10000"
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", "\"https://newsapi.org/v2/\"")
+            buildConfigField("String", "END_POINT", "\"http://192.168.100.226:8080\"")
+            buildConfigField("String", "API_KEY", "\"01a1c7f0a67344e89229a6d20f3eedbb\"")
+            buildConfigField "boolean", "SYSTEM_APP_ENABLED", "true"
+            buildConfigField "boolean", "DEBUG_MODE_ENABLED", "false"
+            // AGENT_PACKAGE: If a modification of the agent's package name is done, this must be
+            // altered
+            buildConfigField "String", "AGENT_PACKAGE", "\"vn.fintechviet.mobileplatforms\""
+            // The time the alarm should first go off, in milliseconds.
+            buildConfigField "int", "DEFAULT_START_TIME", "10000"
+        }
+    }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/ASL2.0'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled = true
+    }
+    sourceSets {
+        main {
+            assets.srcDirs = ["src/main/assets"]
+            jniLibs.srcDirs = ['libs']
+            jni.srcDirs = [] //disable automatic ndk-build
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // android support libraries
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:support-vector-drawable:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:animated-vector-drawable:$rootProject.supportLibraryVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    //implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+
+    // network
+    implementation "com.amitshekhar.android:rx2-android-networking:$rootProject.rx2FastAndroidNetworking"
+    //Network
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okHttpVersion"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+    implementation("com.github.ihsanbal:LoggingInterceptor:$rootProject.interceptorVersion") {
+        exclude group: 'org.json', module: 'json'
+    }
+
+    // database
+    implementation "android.arch.persistence.room:rxjava2:$rootProject.roomDatabase"
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomDatabase"
+
+    // font
+    implementation "uk.co.chrisjenx:calligraphy:$rootProject.calligraphyVersion"
+
+    // image
+    //implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+
+    // parser
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+
+    // debug database
+//    debugImplementation "com.amitshekhar.android:debug-db:$rootProject.debugDBVersion"
+
+    // dependency injection
+    implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
+
+    // reactive
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+
+    // swipe view
+    implementation "com.mindorks:placeholderview:$rootProject.placeholderviewVersion"
+
+    // logger
+    implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
+
+    // dependencies for local unit tests
+//    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+//    testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+//    testAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+
+    // UI Testing
+//    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+//    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
+//    androidTestImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+//    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+
+    // view model
+    implementation "android.arch.lifecycle:extensions:$rootProject.lifecycle"
+    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifecycle"
+
+    // To get SwipeBack feature, rely on both fragmentation & fragmentation-swipeback
+    implementation 'me.yokeyword:fragmentation:1.3.3'
+    // Swipeback is based on fragmentation. Refer to SwipeBackActivity/Fragment for your Customized SupportActivity/Fragment
+    implementation 'me.yokeyword:fragmentation-swipeback:1.3.3'
+
+    // To simplify the communication between Fragments.
+    implementation 'me.yokeyword:eventbus-activity-scope:1.1.0'
+    implementation 'gun0912.ted:tedpermission-rx2:2.1.1'
+
+    implementation 'com.google.android.gms:play-services-base:11.8.0'
+    implementation "com.google.android.gms:play-services-location:11.8.0"
+    implementation 'com.google.android.gms:play-services-basement:11.8.0'
+    implementation 'com.google.android.gms:play-services-safetynet:11.8.0'
+    implementation 'com.google.android.gms:play-services-tasks:11.8.0'
+    implementation 'com.google.firebase:firebase-core:11.8.0'
+    implementation 'com.google.firebase:firebase-messaging:11.8.0'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    implementation 'com.github.pratikbutani:MultiSelectSpinner:08d324c987'
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+
+    // Glide image loader
+    implementation 'com.github.bumptech.glide:glide:4.2.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
+    implementation ('com.github.bumptech.glide:okhttp3-integration:4.2.0'){
+        exclude group: 'glide-parent'
+    }
+    implementation 'jp.wasabeef:glide-transformations:3.0.1'
+    // If you want to use the GPU Filters
+    implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+    implementation 'com.wdullaer:materialdatetimepicker:3.6.0'
+    implementation group: 'joda-time', name: 'joda-time', version: '2.9.7'
+    implementation 'com.android.support:multidex:1.0.1'
+
+    implementation project(':faceidrecognition')
+    implementation fileTree(dir: new File(project(':faceidrecognition').projectDir, 'libs'), include: ['*.jar'])
+
+    implementation project(':fingerprintauthentication')
+
+    // https://mvnrepository.com/artifact/com.itextpdf/itextpdf
+    //implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.0.6'
+
+}
+
+apply plugin: 'com.google.gms.google-services'
+
+configurations.all {
+    resolutionStrategy.force "com.android.support:support-annotations:$supportLibraryVersion"
+    resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+}

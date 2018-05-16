@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:drawable="@drawable/zoom_access_granted"
+    tools:targetApi="lollipop">
+
+    <target
+        android:animation="@animator/zoom_access"
+        android:name="pathCheck"/>
+
+    <target
+        android:animation="@animator/zoom_access"
+        android:name="pathCircle"/>
+
+</animated-vector>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="60dp"
+    android:background="@android:color/transparent"
+    android:gravity="center_vertical"
+    android:textAlignment="center">
+
+    <LinearLayout
+        android:id="@+id/statusRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="14dp"
+            android:gravity="center">
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/accessImage"
+                android:layout_width="wrap_content"
+                android:layout_height="110dp"
+                android:layout_centerHorizontal="true"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/accessIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="76sp"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/accessTopText"
+            android:text=""
+            android:ellipsize="none"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/accessBottomText"
+            android:text=""
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
