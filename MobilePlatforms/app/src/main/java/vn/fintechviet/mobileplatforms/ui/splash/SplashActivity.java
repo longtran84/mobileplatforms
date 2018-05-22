@@ -24,6 +24,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.gemalto.idgo800.testtool.common.GetCertResponse;
 import com.gemalto.idgo800.testtool.remote.coresign.SignPDF;
 import com.google.gson.Gson;
@@ -44,6 +46,7 @@ import java.io.File;
 import vn.bcy.vgca.simtoolkit.VGCAToolkit;
 import vn.fintechviet.mobileplatforms.BR;
 import vn.fintechviet.mobileplatforms.R;
+import vn.fintechviet.mobileplatforms.data.model.system.DeviceInfoPayload;
 import vn.fintechviet.mobileplatforms.databinding.ActivitySplashBinding;
 import vn.fintechviet.mobileplatforms.ui.base.BaseActivity;
 import vn.fintechviet.mobileplatforms.ui.login.LoginActivity;
@@ -56,6 +59,7 @@ import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -160,10 +164,27 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashVi
     }
 
     @Override
+    public void accountSuspension() {
+        getMaterialDialogAlert(this, getString(R.string.warning), getString(R.string.account_suspended_message), new MaterialDialog.SingleButtonCallback() {
+            @Override
+            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                finish();
+                System.exit(0);
+            }
+        }).show();
+    }
+
+    @Override
+    public void accountActive() {
+        mSplashViewModel.startSeeding(this);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSplashViewModel.setNavigator(this);
-        mSplashViewModel.startSeeding(this);
+        DeviceInfoPayload deviceInfoPayload = new DeviceInfoPayload(this);
+        mSplashViewModel.dataFetching(deviceInfoPayload);
 //        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 //        StrictMode.setThreadPolicy(policy);
 //        new MyTask().execute();

@@ -23,6 +23,7 @@ import vn.fintechviet.mobileplatforms.ui.account.balance.AccountBalanceActivityM
 import vn.fintechviet.mobileplatforms.ui.change.password.ChangePasswordFragmentProvider;
 import vn.fintechviet.mobileplatforms.ui.forgot.password.ForgotPasswordActivity;
 import vn.fintechviet.mobileplatforms.ui.forgot.password.ForgotPasswordActivityModule;
+import vn.fintechviet.mobileplatforms.ui.help.HelpFragmentProvider;
 import vn.fintechviet.mobileplatforms.ui.home.HomeFragmentProvider;
 import vn.fintechviet.mobileplatforms.ui.login.LoginActivity;
 import vn.fintechviet.mobileplatforms.ui.login.LoginActivityModule;
@@ -32,6 +33,8 @@ import vn.fintechviet.mobileplatforms.ui.lookup.register.LookupRegisterFragmentP
 import vn.fintechviet.mobileplatforms.ui.main.MainActivity;
 import vn.fintechviet.mobileplatforms.ui.main.MainActivityModule;
 import vn.fintechviet.mobileplatforms.ui.messages.MessagesFragmentProvider;
+import vn.fintechviet.mobileplatforms.ui.messages.details.MessagesDetailActivity;
+import vn.fintechviet.mobileplatforms.ui.messages.details.MessagesDetailActivityModule;
 import vn.fintechviet.mobileplatforms.ui.organizational.budget.OBRActivity;
 import vn.fintechviet.mobileplatforms.ui.organizational.budget.OBRActivityModule;
 import vn.fintechviet.mobileplatforms.ui.process.register.ProcessRegisterFragmentProvider;
@@ -41,6 +44,7 @@ import vn.fintechviet.mobileplatforms.ui.register.RegisterActivityModule;
 import vn.fintechviet.mobileplatforms.ui.reminder.ReminderFragmentProvider;
 import vn.fintechviet.mobileplatforms.ui.splash.SplashActivity;
 import vn.fintechviet.mobileplatforms.ui.splash.SplashActivityModule;
+import vn.fintechviet.mobileplatforms.ui.version.management.VersionManagerFragmentProvider;
 
 /**
  * Created by long_tran on 14/09/17.
@@ -56,7 +60,9 @@ public abstract class ActivityBuilder {
             ProfileFragmentProvider.class,
             ReminderFragmentProvider.class,
             LookupRegisterFragmentProvider.class,
-            ProcessRegisterFragmentProvider.class})
+            ProcessRegisterFragmentProvider.class,
+            VersionManagerFragmentProvider.class,
+            HelpFragmentProvider.class})
     abstract MainActivity bindMainActivity();
 
     @ContributesAndroidInjector(modules = SplashActivityModule.class)
@@ -79,4 +85,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = LookupDocumentActivityModule.class)
     abstract LookupDocumentActivity bindLookupDocumentActivity();
+
+    @ContributesAndroidInjector(modules = MessagesDetailActivityModule.class)
+    abstract MessagesDetailActivity bindMessagesDetailActivity();
 }

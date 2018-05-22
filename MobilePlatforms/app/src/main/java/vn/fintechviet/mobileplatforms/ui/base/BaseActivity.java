@@ -116,7 +116,6 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
         super.onCreate(savedInstanceState);
         mutableLiveDataCheckUpdateResponse = new MutableLiveData<>();
         performDataBinding();
-        subscribeToLiveData();
     }
 
     public T getViewDataBinding() {
@@ -172,20 +171,6 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
     @Override
     protected void onResume() {
         super.onResume();
-//        CheckUpdateRequest checkUpdateRequest = new CheckUpdateRequest();
-//        checkUpdateRequest.setAppCode(getPackageName());
-//        checkUpdateRequest.setVersion(BuildConfig.VERSION_NAME);
-//        getViewModel().getCompositeDisposable().add(getViewModel().getDataManager()
-//                .doServerCheckUpdateApiCall(checkUpdateRequest)
-//                .subscribeOn(getViewModel().getSchedulerProvider().io())
-//                .observeOn(getViewModel().getSchedulerProvider().ui())
-//                .subscribe(checkUpdateResponse -> {
-//                    if (checkUpdateResponse != null) {
-//                        //mutableLiveDataCheckUpdateResponse.setValue(checkUpdateResponse);
-//                    }
-//                }, throwable -> {
-//
-//                }));
         Locale locale = new Locale("vi", "VN");
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -199,32 +184,7 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
      *
      */
     private void subscribeToLiveData() {
-        getMutableLiveDataCheckUpdateResponse().observe(this, checkUpdateResponse -> {
-            if (!checkUpdateResponse.isUpdate()) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setCancelable(false);
-                builder.setTitle(getString(R.string.you_are_not_updated_title));
-                builder.setIcon(R.drawable.android_app_on_google_play);
-                builder.setMessage(getString(R.string.button_text_message_update_apk));
-                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
-                        dialog.dismiss();
-                        finish();
-                        System.exit(0);
-                    }
-                });
-                builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        finish();
-                    }
-                });
-                builder.show();
-            }
-        });
+
     }
 
     public void showLoading() {

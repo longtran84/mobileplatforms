@@ -29,6 +29,7 @@ import org.apache.commons.lang3.StringUtils;
 import vn.fintechviet.mobileplatforms.data.DataManager;
 import vn.fintechviet.mobileplatforms.data.model.api.UserProfile;
 import vn.fintechviet.mobileplatforms.data.model.others.QuestionCardData;
+import vn.fintechviet.mobileplatforms.data.model.system.DeviceInfoPayload;
 import vn.fintechviet.mobileplatforms.ui.base.BaseViewModel;
 import vn.fintechviet.mobileplatforms.utils.rx.SchedulerProvider;
 
@@ -101,6 +102,33 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
         return userProfilePicUrl;
     }
 
+    /**
+     *
+     */
+    public void dataFetching(DeviceInfoPayload deviceInfoPayload) {
+        getCompositeDisposable().add(getDataManager()
+                .doServerAccountVerificationApiCall(deviceInfoPayload.getSerialNumber())
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(accountVerificationResponse -> {
+                    if (accountVerificationResponse != null && accountVerificationResponse.getData() != null) {
+                        Boolean accountVerification = accountVerificationResponse.getData();
+                        if (accountVerification.booleanValue()) {
+                            getNavigator().accountActive();
+                        } else {
+                            getNavigator().accountSuspension();
+                        }
+                    }
+                    setIsLoading(false);
+                }, throwable -> {
+                    throwable.printStackTrace();
+                    setIsLoading(false);
+                }));
+    }
+
+    /**
+     *
+     */
     public void loadUserProfile() {
         String accessToken = getDataManager().getAccessToken().trim();
         getCompositeDisposable().add(getDataManager()
@@ -142,7 +170,7 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
             userName.set(currentUserName);
         }
 
-        final String currentUserEmail = userProfile.getUserName();
+        final String currentUserEmail = userProfile.getEmail();
         if (!StringUtils.isBlank(currentUserEmail)) {
             userEmail.set(currentUserEmail);
         }

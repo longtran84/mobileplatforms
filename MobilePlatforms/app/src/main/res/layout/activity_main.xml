@@ -105,7 +105,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_above="@+id/relative_layout_bottom_navigation_view_id"
-                            android:minHeight="?attr/actionBarSize">
+                            android:minHeight="?android:attr/actionBarSize">
 
 
                             <FrameLayout

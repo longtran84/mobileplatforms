@@ -39,6 +39,10 @@ public class Messages {
     @SerializedName("approveDate")
     private String approveDate;
 
+    @Expose
+    @SerializedName("icon")
+    private String icon;
+
     public String getUuid() {
         return uuid;
     }
@@ -69,5 +73,13 @@ public class Messages {
 
     public void setApproveDate(String approveDate) {
         this.approveDate = approveDate;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }

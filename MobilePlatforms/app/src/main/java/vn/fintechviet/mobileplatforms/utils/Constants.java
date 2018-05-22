@@ -16,6 +16,9 @@
 
 package vn.fintechviet.mobileplatforms.utils;
 
+import android.os.Bundle;
+import android.os.PersistableBundle;
+
 import vn.fintechviet.mobileplatforms.BuildConfig;
 
 /**
@@ -299,6 +302,15 @@ public class Constants {
 		private Operation() {
 			throw new AssertionError();
 		}
+	}
+
+	/**
+	 * A mapping from String keys to values of various types. In most cases, you
+	 * should work directly with either the {@link Bundle} or
+	 * {@link PersistableBundle} subclass.
+	 */
+	public final class BundleConstant {
+		public static final String MESSAGES_DETAIL_ID = "MESSAGES_DETAIL_ID";
 	}
 
 	/**

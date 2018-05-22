@@ -16,11 +16,14 @@
 
 package vn.fintechviet.mobileplatforms.ui.main;
 
+import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -34,6 +37,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
@@ -43,10 +49,13 @@ import me.yokeyword.fragmentation.SupportFragment;
 import vn.fintechviet.mobileplatforms.BR;
 import vn.fintechviet.mobileplatforms.BuildConfig;
 import vn.fintechviet.mobileplatforms.R;
+import vn.fintechviet.mobileplatforms.data.model.api.CheckUpdateRequest;
+import vn.fintechviet.mobileplatforms.data.model.system.DeviceInfoPayload;
 import vn.fintechviet.mobileplatforms.databinding.ActivityMainBinding;
 import vn.fintechviet.mobileplatforms.databinding.LayoutNavigationHeaderMainBinding;
 import vn.fintechviet.mobileplatforms.ui.base.BaseActivity;
 import vn.fintechviet.mobileplatforms.ui.change.password.ChangePasswordFragment;
+import vn.fintechviet.mobileplatforms.ui.help.HelpFragment;
 import vn.fintechviet.mobileplatforms.ui.home.HomeFragment;
 import vn.fintechviet.mobileplatforms.ui.login.LoginActivity;
 import vn.fintechviet.mobileplatforms.ui.lookup.register.LookupRegisterFragment;
@@ -54,6 +63,7 @@ import vn.fintechviet.mobileplatforms.ui.messages.MessagesFragment;
 import vn.fintechviet.mobileplatforms.ui.process.register.ProcessRegisterFragment;
 import vn.fintechviet.mobileplatforms.ui.profile.ProfileFragment;
 import vn.fintechviet.mobileplatforms.ui.reminder.ReminderFragment;
+import vn.fintechviet.mobileplatforms.ui.version.management.VersionManagerFragment;
 import vn.fintechviet.mobileplatforms.ui.widget.BottomNavigationViewEx;
 import vn.fintechviet.mobileplatforms.utils.AppConstants;
 
@@ -78,6 +88,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     private LookupRegisterFragment lookupRegisterFragment;
     private ProcessRegisterFragment processRegisterFragment;
     private ProfileFragment profileFragment;
+    private VersionManagerFragment versionManagerFragment;
+    private HelpFragment helpFragment;
 
     private int hideFragment = AppConstants.TYPE_HOME_FRAGMENT;
     private int showFragment = AppConstants.TYPE_MESSAGE_FRAGMENT;
@@ -128,6 +140,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                 return processRegisterFragment;
             case AppConstants.TYPE_PROFILE_FRAGMENT:
                 return profileFragment;
+            case AppConstants.TYPE_VERSION_MANAGER:
+                return versionManagerFragment;
+            case AppConstants.TYPE_HELP:
+                return helpFragment;
             default:
                 return homeFragment;
         }
@@ -162,6 +178,35 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     }
 
     @Override
+    public void accountSuspension() {
+        getMaterialDialogAlert(this, getString(R.string.warning), getString(R.string.account_suspended_message), new MaterialDialog.SingleButtonCallback() {
+            @Override
+            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                finish();
+                System.exit(0);
+            }
+        }).show();
+    }
+
+    @Override
+    public void accountActive() {
+        CheckUpdateRequest checkUpdateRequest = new CheckUpdateRequest();
+        checkUpdateRequest.setAppCode(getPackageName());
+        checkUpdateRequest.setVersion(BuildConfig.VERSION_NAME);
+        getViewModel().getCompositeDisposable().add(getViewModel().getDataManager()
+                .doServerCheckUpdateApiCall(checkUpdateRequest)
+                .subscribeOn(getViewModel().getSchedulerProvider().io())
+                .observeOn(getViewModel().getSchedulerProvider().ui())
+                .subscribe(checkUpdateResponse -> {
+                    if (checkUpdateResponse != null) {
+                        getMutableLiveDataCheckUpdateResponse().setValue(checkUpdateResponse);
+                    }
+                }, throwable -> {
+
+                }));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mActivityMainBinding = getViewDataBinding();
@@ -175,6 +220,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         if (mDrawer != null) {
             mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         }
+        DeviceInfoPayload deviceInfoPayload = new DeviceInfoPayload(this);
+        mMainViewModel.dataFetching(deviceInfoPayload);
     }
 
     private void lockDrawer() {
@@ -231,6 +278,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         reminderFragment = ReminderFragment.newInstance();
         lookupRegisterFragment = LookupRegisterFragment.newInstance();
         processRegisterFragment = ProcessRegisterFragment.newInstance();
+        versionManagerFragment = VersionManagerFragment.newInstance();
+        helpFragment = HelpFragment.newInstance();
         mActivityMainBinding.bottomNavigationViewEx.getMenu().clear();
         mActivityMainBinding.bottomNavigationViewEx.inflateMenu(R.menu.bottom_navigation);
         mActivityMainBinding.bottomNavigationViewEx.enableShiftingMode(false);
@@ -263,7 +312,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         });
         loadMultipleRootFragment(R.id.fl_main_content, 0, homeFragment, messageFragment,
                 changePasswordFragment, reminderFragment, lookupRegisterFragment, profileFragment,
-                processRegisterFragment);
+                processRegisterFragment, versionManagerFragment, helpFragment);
     }
 
     private void setupNavigationMenu() {
@@ -300,9 +349,17 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                             showHideFragment(getTargetFragment(showFragment), getTargetFragment(hideFragment));
                             hideFragment = showFragment;
                             return true;
+                        case R.id.navigation_version_manager_id:
+                            showFragment = AppConstants.TYPE_VERSION_MANAGER;
+                            showHideFragment(getTargetFragment(showFragment), getTargetFragment(hideFragment));
+                            hideFragment = showFragment;
+                            return true;
                         case R.id.navigation_share_information_id:
                             return true;
                         case R.id.navigation_help_tutorial_id:
+                            showFragment = AppConstants.TYPE_HELP;
+                            showHideFragment(getTargetFragment(showFragment), getTargetFragment(hideFragment));
+                            hideFragment = showFragment;
                             return true;
                         case R.id.navigation_sign_out_id:
                             mMainViewModel.logout();
@@ -313,12 +370,44 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                 });
     }
 
+    /**
+     *
+     */
     private void showAboutFragment() {
         lockDrawer();
     }
 
+    /**
+     *
+     */
     private void subscribeToLiveData() {
         mMainViewModel.getUserProfileData().observe(this, userProfile -> mMainViewModel.onNavigationMenuUpdateUserProfile(userProfile));
+        getMutableLiveDataCheckUpdateResponse().observe(this, checkUpdateResponse -> {
+            if (checkUpdateResponse.isUpdate()) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setCancelable(false);
+                builder.setTitle(getString(R.string.you_are_not_updated_title));
+                builder.setIcon(R.drawable.android_app_on_google_play);
+                builder.setMessage(getString(R.string.button_text_message_update_apk));
+                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+                        dialog.dismiss();
+                        finish();
+                        System.exit(0);
+                    }
+                });
+                builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        finish();
+                    }
+                });
+                builder.show();
+            }
+        });
     }
 
     private void unlockDrawer() {

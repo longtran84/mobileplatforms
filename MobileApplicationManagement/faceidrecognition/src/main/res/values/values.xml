@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="zoom_alert_green">#258988</color>
+    <color name="zoom_color">#1292C1</color>
+    <color name="zoom_default_fingerprint_success">#49E20E</color>
+    <color name="zoom_default_foreground">#FFFFFF</color>
+    <color name="zoom_default_foreground_progress">#FFFFFF</color>
+    <color name="zoom_default_foreground_results">#FFFFFF</color>
+    <color name="zoom_default_tab_selected_background">#33ffffff</color>
+    <color name="zoom_default_tab_selected_foreground">#ffffff</color>
+    <color name="zoom_default_tab_success_background">#000000</color>
+    <color name="zoom_default_tab_success_foreground">#ffffff</color>
+    <color name="zoom_default_tab_unselected_foreground">#ffffff</color>
+    <color name="zoom_grey">#808080</color>
+    <color name="zoom_hint_black">#80000000</color>
+    <color name="zoom_hint_white">#80ffffff</color>
+    <color name="zoom_outline_shadow_dark">#F2000000</color>
+    <color name="zoom_outline_shadow_light">#ffffff</color>
+    <color name="zoom_reason_background_black">#80494949</color>
+    <color name="zoom_settings">#1f2d35</color>
+    <declare-styleable name="ZoomOval"/>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="zoom_oval_progress_stroke">12dp</dimen>
+    <dimen name="zoom_oval_stroke">6dp</dimen>
+    <integer name="zoom_path_duration">1150</integer>
+    <string name="zoom_access_authenticate">AUTHENTICATE</string>
+    <string name="zoom_access_authenticated">Authenticated</string>
+    <string name="zoom_access_completed">COMPLETED</string>
+    <string name="zoom_access_enrollment">Enrollment</string>
+    <string name="zoom_access_successful">SUCCESSFUL</string>
+    <string name="zoom_access_unable_to">Unable To</string>
+    <string name="zoom_access_unsuccessful">UNSUCCESSFUL</string>
+    <string name="zoom_action_authenticate">AUTHENTICATE</string>
+    <string name="zoom_action_continue">CONTINUE</string>
+    <string name="zoom_action_enroll">ENROLL</string>
+    <string name="zoom_action_im_ready">I\'M READY</string>
+    <string name="zoom_action_ok">OK</string>
+    <string name="zoom_action_start">START</string>
+    <string name="zoom_action_try_again">TRY AGAIN</string>
+    <string name="zoom_action_verify">VERIFY</string>
+    <string name="zoom_auth_tab_fingerprint">fingerprint</string>
+    <string name="zoom_auth_tab_pin">pin</string>
+    <string name="zoom_auth_tab_zoom">ZoOm</string>
+    <string name="zoom_camera_permission_enable_camera">ENABLE CAMERA</string>
+    <string name="zoom_camera_permission_header">Camera Access</string>
+    <string name="zoom_camera_permission_launch_settings">LAUNCH SETTINGS</string>
+    <string name="zoom_camera_permission_message_auth">ZoOm would like to access your camera for selfie authentication.</string>
+    <string name="zoom_camera_permission_message_enroll">To get started with ZoOm,\nenable access to your selfie camera.</string>
+    <string name="zoom_encryption_secret_missing_header">Encryption</string>
+    <string name="zoom_encryption_secret_missing_message">The user encryption secret is missing or incorrect.</string>
+    <string name="zoom_feedback_a_little_too_close">Move Phone Away</string>
+    <string name="zoom_feedback_a_little_too_close_tablet">Move Tablet Away</string>
+    <string name="zoom_feedback_center_face">Center Your Face</string>
+    <string name="zoom_feedback_face_not_found">Frame Your Face</string>
+    <string name="zoom_feedback_face_not_looking_straight_ahead">Look Straight Ahead</string>
+    <string name="zoom_feedback_face_not_upright">Keep Your Head Straight</string>
+    <string name="zoom_feedback_hold_steady">Hold Steady</string>
+    <string name="zoom_feedback_move_phone_away">Move Phone Away</string>
+    <string name="zoom_feedback_move_phone_closer">Move Phone Closer</string>
+    <string name="zoom_feedback_move_phone_to_eye_level">Move Phone Up To Eye Level</string>
+    <string name="zoom_feedback_move_tablet_away">Move Tablet Away</string>
+    <string name="zoom_feedback_move_tablet_closer">Move Tablet In</string>
+    <string name="zoom_feedback_move_tablet_to_eye_level">Move Tablet Up To Eye Level</string>
+    <string name="zoom_feedback_use_even_lighting">Light Face More Evenly</string>
+    <string name="zoom_feedback_welcome_back">Welcome Back</string>
+    <string name="zoom_fingerprint_enter">enter your fingerprint</string>
+    <string name="zoom_fingerprint_max_reached">Unavailable, Max number of attempts reached</string>
+    <string name="zoom_fingerprint_not_registered">No Fingerprint registered, please register and try again</string>
+    <string name="zoom_fingerprint_try_again">Please try again</string>
+    <string name="zoom_glasses_header">Ready to ZoOm?</string>
+    <string name="zoom_glasses_message">You\'re looking a bit\n different than usual.\n\nIf you\'re wearing glasses or a new hat please take it off and we\'ll try this again.\n\nIf not, just keep on being you!</string>
+    <string name="zoom_locked_button">Locked Out</string>
+    <string name="zoom_locked_header">ZoOm is Locked</string>
+    <string name="zoom_locked_header_auth_failed">Authentication\nUnsuccessful</string>
+    <string name="zoom_locked_header_enroll_failed">Enrollment\nUnsuccessful</string>
+    <string name="zoom_locked_header_ready">ZoOm is Ready</string>
+    <string name="zoom_locked_try_again_in">Please try again in:</string>
+    <string name="zoom_mid_enrollment1_header">Lookin\' Good!</string>
+    <string name="zoom_mid_enrollment1_instructions_header">Before Proceeding</string>
+    <string name="zoom_mid_enrollment1_instructions_message">Please clean off your camera lens.</string>
+    <string name="zoom_mid_enrollment1_message">That was easy right?\nLet\'s try another one!</string>
+    <string name="zoom_mid_enrollment1_start">OKAY, IT\'S CLEAN</string>
+    <string name="zoom_mid_enrollment2_header">Excellent!</string>
+    <string name="zoom_mid_enrollment2_instructions_header">For Best Performance</string>
+    <string name="zoom_mid_enrollment2_instructions_message">We highly recommend turning around 180° to capture your face in different lighting.</string>
+    <string name="zoom_mid_enrollment2_message">Just one last time\nand you\'re all set!</string>
+    <string name="zoom_mid_enrollment2_start">FINISH ENROLLMENT</string>
+    <string name="zoom_mid_enrollment3_glasses_header">Well Done!</string>
+    <string name="zoom_mid_enrollment3_glasses_message">Let\'s move on to the next step.\n\nIf you\'d like to use ZoOm without glasses, please take them off now.</string>
+    <string name="zoom_mid_enrollment3_glasses_start">OKAY, GOT IT</string>
+    <string name="zoom_noglasses_header">ZoOm without Glasses</string>
+    <string name="zoom_noglasses_message">We noticed you\'re not wearing glasses, but you enrolled with ZoOm while wearing glasses.\n\nPlease ZoOm again while wearing your glasses.\n\nThis will help us authenticate you securely in the future whether you are wearing glasses or not!</string>
+    <string name="zoom_pin_confirm">confirm your PIN</string>
+    <string name="zoom_pin_delete">Delete</string>
+    <string name="zoom_pin_enter">enter your PIN</string>
+    <string name="zoom_pin_incorrect">Try again.</string>
+    <string name="zoom_pin_mismatch">Try again.</string>
+    <string name="zoom_pre_enroll_header">Face Enrollment</string>
+    <string name="zoom_pre_enroll_header_face_angle">Raise Phone\nUp To Eye Level When Ready</string>
+    <string name="zoom_pre_enroll_header_lighting">Light Face Evenly</string>
+    <string name="zoom_pre_enroll_header_ready">All Set!</string>
+    <string name="zoom_pre_enroll_header_verify">Face Capture</string>
+    <string name="zoom_pre_enroll_message">First we\'ll need to take a quick video selfie.</string>
+    <string name="zoom_pre_enroll_message_face_angle">Make sure the phone is on your eye level. Get ready to ZoOm!</string>
+    <string name="zoom_pre_enroll_message_lighting">Please check your environment to ensure that you have good lighting.</string>
+    <string name="zoom_pre_enroll_message_tablet">First we\'ll need to take a quick video selfie.\n\nHold the tablet in front of your face and make sure you are in good lighting before you begin.</string>
+    <string name="zoom_retry_auth1_header">Check Lighting\nand Phone Position</string>
+    <string name="zoom_retry_auth1_message">Hold the phone in front of your face and make sure you are in good lighting before proceeding.\n\nFor best results, wipe off your camera lens so your face is clear and crisp in the camera.</string>
+    <string name="zoom_retry_auth1_message_tablet">Hold the tablet in front of your face and make sure you are in good lighting before proceeding.\n\nFor best results, wipe off your camera lens so your face is clear and crisp in the camera.</string>
+    <string name="zoom_retry_auth1_message_too_dark">We\'re having trouble seeing you.\nMake sure your face is well lit.</string>
+    <string name="zoom_retry_auth2_header">Check Environment</string>
+    <string name="zoom_retry_auth2_message">Something about your environment is making it hard to authenticate you.\n\nMake sure you are in a well-lit location. If you are wearing glasses, try moving to reduce reflections.</string>
+    <string name="zoom_retry_auth2_message_too_dark">We\'re having trouble seeing you.\nMake sure your face is well lit.</string>
+    <string name="zoom_retry_bad_lighting_header">Light Face Evenly</string>
+    <string name="zoom_retry_bad_lighting_message">Something about your environment lighting is making it hard to authenticate you.\n\nMake sure you are in a well-lit and not too bright location.</string>
+    <string name="zoom_retry_enroll_header">Face Enrollment</string>
+    <string name="zoom_retry_enroll_instructions_header">Additional Tips</string>
+    <string name="zoom_retry_enroll_instructions_message">\u2022 Sit or stand straight up\n\u2022 Use normal indoor lighting\n\u2022 Keep your hand steady</string>
+    <string name="zoom_retry_enroll_message">Hold the phone in front of your face and make sure you are in good lighting before proceeding.\n\nIf you are wearing glasses, try moving to reduce reflections.</string>
+    <string name="zoom_retry_enroll_message_tablet">Hold the tablet in front of your face and make sure you are in good lighting before proceeding.\n\nIf you are wearing glasses, try moving to reduce reflections.</string>
+    <string name="zoom_retry_enroll_message_too_dark">We\'re having trouble seeing you.\nMake sure your face is well lit.</string>
+    <string name="zoom_retry_face_angle_header">Raise Phone\nUp to Eye Level</string>
+    <string name="zoom_retry_face_angle_message">Please keep the phone on your eye level at all time. Don\'t place it too low or too high.</string>
+    <string name="zoom_retry_generic_header">Check Lighting\nand Phone Position</string>
+    <string name="zoom_retry_generic_message">Hold the phone in front of your face and make sure you are in good lighting before proceeding.\n\nFor best results, wipe off your camera lens so your face is clear and crisp in the camera.</string>
+    <string name="zoom_retry_inconsistent_session_header">ZoOm Consistently</string>
+    <string name="zoom_retry_inconsistent_session_message">Please keep your face in the capturing oval. Don\'t look away during the session and try to move the phone in steadily.</string>
+    <string name="zoom_retry_verify_header">Face Capture</string>
+    <string name="zoom_retry_warning_message">1 More Try Before Lockout</string>
+    <string name="zoom_sdk_icon_attention_fill" translatable="false">\ue901</string>
+    <string name="zoom_sdk_icon_camera_fill" translatable="false">\ue900</string>
+    <string name="zoom_sdk_icon_caution" translatable="false">\ue908</string>
+    <string name="zoom_sdk_icon_check" translatable="false">\ue66c</string>
+    <string name="zoom_sdk_icon_close" translatable="false">\ue680</string>
+    <string name="zoom_sdk_icon_close_circle" translatable="false">\ue681</string>
+    <string name="zoom_sdk_icon_close_circle_fill" translatable="false">\ue902</string>
+    <string name="zoom_sdk_icon_fingerprint" translatable="false">\ue6cb</string>
+    <string name="zoom_sdk_icon_icon_unlock" translatable="false">\ue6ce</string>
+    <string name="zoom_sdk_icon_info" translatable="false">\ue647</string>
+    <string name="zoom_sdk_icon_keypad" translatable="false">\ue645</string>
+    <string name="zoom_sdk_icon_left" translatable="false">\ue686</string>
+    <string name="zoom_sdk_icon_light" translatable="false">\ue90c</string>
+    <string name="zoom_sdk_icon_light_fill" translatable="false">\ue90d</string>
+    <string name="zoom_sdk_icon_lock" translatable="false">\ue6cc</string>
+    <string name="zoom_sdk_icon_mid_enroll_glasses" translatable="false">\ue914</string>
+    <string name="zoom_sdk_icon_moon" translatable="false">\ue90e</string>
+    <string name="zoom_sdk_icon_moon_fill" translatable="false">\ue90f</string>
+    <string name="zoom_sdk_icon_one_circle" translatable="false">\ue903</string>
+    <string name="zoom_sdk_icon_phone_check_fill" translatable="false">\ue909</string>
+    <string name="zoom_sdk_icon_phone_zoom" translatable="false">\ue917</string>
+    <string name="zoom_sdk_icon_redo" translatable="false">ue910</string>
+    <string name="zoom_sdk_icon_selfie" translatable="false">\ue666</string>
+    <string name="zoom_sdk_icon_settings" translatable="false">\ue6d9</string>
+    <string name="zoom_sdk_icon_three_circle" translatable="false">\ue905</string>
+    <string name="zoom_sdk_icon_thumbs_up_fill" translatable="false">\ue907</string>
+    <string name="zoom_sdk_icon_two_circle" translatable="false">\ue904</string>
+    <string name="zoom_sdk_icon_undetermined" translatable="false">\ue91a</string>
+    <string name="zoom_sdk_icon_user_alert" translatable="false">\ue928</string>
+    <string name="zoom_sdk_icon_user_fail_fill" translatable="false">\ue906</string>
+    <string name="zoom_sdk_icon_user_retry" translatable="false">\ue911</string>
+    <string name="zoom_sdk_icon_wifi_icon" translatable="false">\ue925</string>
+    <string name="zoom_sdk_icon_zoom_logo_dev" translatable="false">\ue923</string>
+    <string name="zoom_sdk_icon_zoom_logo_prod" translatable="false">\ue921</string>
+    <string name="zoom_token_issue_header">Uh oh...</string>
+    <string name="zoom_token_issue_message">The ZoOm Developer Token for this application could not be validated. Please verify your token and network connection and try again.</string>
+    <string name="zoom_user_info_about">Why am I seeing this?</string>
+    <string name="zoom_user_info_alert_header">Failure Notifications</string>
+    <string name="zoom_user_info_alert_message">ZoOm records the time of the last fail attempt. If it wasn\'t you, then someone else tried to access your account.</string>
+    <string name="zoom_user_info_header">Ready to ZoOm?</string>
+    <string name="zoom_user_info_message">Your Last ZoOm Attempt\nFailed at %s</string>
+    <string name="zoom_user_not_found_header">User Not Found</string>
+    <string name="zoom_user_not_found_message">Please ensure that a valid user is enrolled before launching ZoOm Authentication.</string>
+    <string name="zoom_wifi_required_header">WIFI Required</string>
+    <string name="zoom_wifi_required_message">This app token requires ZoOm to be used with a wifi connection to ensure high quality data and analytics are transmitted to FaceTec promptly.\n\nProduction ZoOm apps may use any network connection and do not transmit personal biometric data to FaceTec\'s servers.</string>
+    <style name="zoom_pin_number">
+        <item name="android:clickable">false</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_width">14dp</item>
+        <item name="android:layout_height">14dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textOn">""</item>
+        <item name="android:textOff">""</item>
+    </style>
+    <style name="zoom_pin_pad_button_delete">
+        <item name="android:layout_width">75dp</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@drawable/zoom_button_text_state</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+    <style name="zoom_pin_pad_button_delete_small">
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@drawable/zoom_button_text_state</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+    <style name="zoom_pin_pad_button_left">
+        <item name="android:layout_width">75dp</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@drawable/zoom_button_text_state</item>
+        <item name="android:background">@drawable/zoom_pin_pad_button</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginRight">20dp</item>
+    </style>
+    <style name="zoom_pin_pad_button_left_small">
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@drawable/zoom_button_text_state</item>
+        <item name="android:background">@drawable/zoom_pin_pad_button</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginRight">20dp</item>
+    </style>
+    <style name="zoom_pin_pad_button_middle">
+        <item name="android:layout_width">75dp</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@drawable/zoom_button_text_state</item>
+        <item name="android:background">@drawable/zoom_pin_pad_button</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="zoom_pin_pad_button_middle_small">
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@drawable/zoom_button_text_state</item>
+        <item name="android:background">@drawable/zoom_pin_pad_button</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="zoom_pin_pad_button_right">
+        <item name="android:layout_width">75dp</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@drawable/zoom_button_text_state</item>
+        <item name="android:background">@drawable/zoom_pin_pad_button</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+    <style name="zoom_pin_pad_button_right_small">
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@drawable/zoom_button_text_state</item>
+        <item name="android:background">@drawable/zoom_pin_pad_button</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+
+
+    //
+    // main activity
+    //
+    <string name="action_enroll">Enroll</string>
+    <string name="action_authenticate">Authenticate</string>
+    <string name="action_verify">Verify</string>
+    <string name="action_show_results">Results</string>
+    <string name="action_settings">Settings</string>
+    <string name="subheader_text">selfie authenticator</string>
+
+    <string name="initialization_failed" translatable="false">Initialization failed: %1$s</string>
+    <string name="initialization_succeeded" translatable="false">ZoOm is ready to use</string>
+    <string name="initializing" translatable="false">Initializing…</string>
+
+    //
+    // results screen
+    //
+    <string name="results_status" translatable="false">Status</string>
+    <string name="results_factors" translatable="false">Factors</string>
+    <string name="results_liveness_level" translatable="false">Liveness</string>
+
+    //
+    // settings screen
+    //
+    <string name="developer_settings" translatable="false"><b>Developer Settings</b></string>
+    <string name="developer_settings_details" translatable="false">Configure Branding, Authentication, and UX Settings</string>
+    <string name="device_features" translatable="false">Device Features</string>
+    <string name="camera_permission_status" translatable="false">Camera Permission</string>
+    <string name="fingerprint_status" translatable="false">Fingerprint</string>
+    <string name="sdk_status" translatable="false">ZoOm SDK Status</string>
+    <string name="tee_status" translatable="false">Trusted Execution Environment</string>
+    <string name="other_settings" translatable="false">Other Settings</string>
+    <string name="zoom_intro_switch" translatable="false">Zoom Intro</string>
+    <string name="pre_enrollment_screen_switch" translatable="false">Pre-enrollment Screen</string>
+    <string name="user_locked_screen_switch" translatable="false">User Locked Screen</string>
+    <string name="user_success_screen_switch" translatable="false">Success Screen</string>
+    <string name="failure_screen_switch" translatable="false">Failure Screen</string>
+    <string name="localization_settings" translatable="false">Localization</string>
+    <string name="language" translatable="false">Language</string>
+    <string name="zoom_factors" translatable="false">Authentication Factors</string>
+    <string name="zoom_factor_zoom" translatable="false">ZoOm Only</string>
+    <string name="zoom_factor_two_factor" translatable="false">Two Factor</string>
+    <string name="zoom_factor_three_factor" translatable="false">Three Factor</string>
+    <string name="zoom_color_palette" translatable="false">Color Palette</string>
+    <string name="ux_settings" translatable="false">UX Settings</string>
+    <string name="custom_theme" translatable="false">Custom</string>
+    <string name="pre_enroll_instructions" translatable="false">Pre-Enrollment Instructions</string>
+    <string name="enroll_success_screen" translatable="false">Enrollment Success Screen</string>
+    <string name="enroll_failure_screen" translatable="false">Enrollment Failure Screen</string>
+    <string name="auth_tab_bar" translatable="false">Authentication Tab Bar</string>
+    <string name="auth_success_screen" translatable="false">Authentication Success Screen</string>
+    <string name="auth_failure_screen" translatable="false">Authentication Failure Screen</string>
+    <string name="select_verfication_image" translatable="false">Select Verification Image</string>
+    <string name="clear_verfication_image" translatable="false">Clear Verification Image</string>
+    <string name="load_zoom_facemap" translatable="false">Load Zoom Facemap</string>
+    <string name="delete_all_enrollments" translatable="false">Clear Enrollments</string>
+    <string name="inspect_audit_trail_image" translatable="false">Inspect Audit Trail Images</string>
+    <string name="cancel_button" translatable="false">Cancel</string>
+    <string name="ok" translatable="false">OK</string>
+
+    <string name="MFA_alert_title" translatable="false">ZoOm Multi-factor Login</string>
+    <string name="MFA_alert_message" translatable="false">To use ZoOm Multi-factor Login, you will need to re-enroll.</string>
+    <string name="LANGUAGE_alert_title" translatable="false">ZoOm setLanguage API</string>
+    <string name="LANGUAGE_alert_message" translatable="false">This action will override ZoOm SDK with the selected language regardless of system locale. The application will restart to reflect the changes.\n\nZoOm also supports localization via standard methods. Please refer to the documentation for more details.</string>
+
+    //
+    // others
+    //
+    <string name="build_number" translatable="false">SDK Version %s</string>
+    <string name="app_name" translatable="false">ZoOm SDK</string>
+    <string name="app_name_simple" translatable="false">ZoOm SDK</string>
+    <string name="zoom_sdk_status_text" translatable="false">Checking your ZoOm app token...</string>
+
+</resources>

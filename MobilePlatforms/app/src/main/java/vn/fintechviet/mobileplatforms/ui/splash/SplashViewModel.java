@@ -38,6 +38,8 @@ import io.reactivex.schedulers.Schedulers;
 import vn.bcy.vgca.simtoolkit.VGCAToolkit;
 import vn.fintechviet.mobileplatforms.R;
 import vn.fintechviet.mobileplatforms.data.DataManager;
+import vn.fintechviet.mobileplatforms.data.model.api.AccountVerification;
+import vn.fintechviet.mobileplatforms.data.model.system.DeviceInfoPayload;
 import vn.fintechviet.mobileplatforms.ui.base.BaseViewModel;
 import vn.fintechviet.mobileplatforms.utils.Constants;
 import vn.fintechviet.mobileplatforms.utils.Preference;
@@ -59,6 +61,30 @@ public class SplashViewModel extends BaseViewModel<SplashNavigator> {
      */
     public SplashViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
+    }
+
+    /**
+     *
+     */
+    public void dataFetching(DeviceInfoPayload deviceInfoPayload) {
+        getCompositeDisposable().add(getDataManager()
+                .doServerAccountVerificationApiCall(deviceInfoPayload.getSerialNumber())
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(accountVerificationResponse -> {
+                    if (accountVerificationResponse != null && accountVerificationResponse.getData() != null) {
+                        Boolean accountVerification = accountVerificationResponse.getData();
+                        if (accountVerification.booleanValue()) {
+                            getNavigator().accountActive();
+                        } else {
+                            getNavigator().accountSuspension();
+                        }
+                    }
+                    setIsLoading(false);
+                }, throwable -> {
+                    throwable.printStackTrace();
+                    setIsLoading(false);
+                }));
     }
 
     /**
@@ -169,7 +195,7 @@ public class SplashViewModel extends BaseViewModel<SplashNavigator> {
                             public void accept(Integer integer) throws Exception {
                                 try {
                                     String sourceCert = VGCAToolkit.GetCert("01682927581");
-                                    System.err.println(sourceCert +"-----------------");
+                                    System.err.println(sourceCert + "-----------------");
                                 } catch (Exception exception) {
                                     exception.printStackTrace();
                                 }

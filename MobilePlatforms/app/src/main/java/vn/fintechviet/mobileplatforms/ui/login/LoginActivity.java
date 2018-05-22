@@ -18,10 +18,12 @@ package vn.fintechviet.mobileplatforms.ui.login;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.facetec.zoom.sdk.FaceIDIdentification;
 import com.facetec.zoom.sdk.ZoomAuthenticationResult;
@@ -114,6 +116,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
     public void signUp() {
         Intent intent = RegisterActivity.newIntent(LoginActivity.this);
         startActivity(intent);
+        finish();
     }
 
     @Override
@@ -184,6 +187,28 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
     @Override
     protected void onResume() {
         super.onResume();
+        final ZoomSDK.InitializeCallback mInitializeCallback = new ZoomSDK.InitializeCallback() {
+            @Override
+            public void onCompletion(final boolean successful) {
+                if (successful) {
+                    mLoginViewModel.getCompositeDisposable().add(
+                            Single
+                                    .just(1)
+                                    .subscribeOn(mLoginViewModel.getSchedulerProvider().io())
+                                    .observeOn(mLoginViewModel.getSchedulerProvider().ui())
+                                    .subscribe(new Consumer<Integer>() {
+                                        @Override
+                                        public void accept(Integer integer) throws Exception {
+
+                                        }
+                                    }));
+                } else {
+                    mActivityLoginBinding.appCompatImageViewFaceIDRecognition.setColorFilter(Color.RED);
+                    throw new RuntimeException("Initialization failed.  Please check that you have set your ZoOm app token to the zoomAppToken variable in this file.  To retrieve your app token, visit https://dev.zoomlogin.com/zoomsdk/#/account.");
+                }
+            }
+        };
+        faceIDIdentification.initializeZoom(this, mInitializeCallback);
     }
 
     @Override
@@ -199,7 +224,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
     @Override
     public void fingerprintRecognitionClick() {
         Intent intent = FingerprintAuthenticationActivity.newIntent(this,
-                FingerprintAuthenticationActivity.MODE_DECRYPTION_SECRET_VALUE, "+s7PJB82CkZm3oiVznLQEA==");
+                FingerprintAuthenticationActivity.MODE_DECRYPTION_SECRET_VALUE, mLoginViewModel.getDataManager().getFingerprintDataEncrypt());
         startActivityForResult(intent, FingerprintAuthenticationActivity.REQUEST_CODE_AUTHENTICATION);
     }
 
@@ -332,12 +357,6 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
                         DeviceInfoPayload deviceInfoPayload = new DeviceInfoPayload(getApplicationContext());
                         mLoginViewModel.login(email, password, deviceInfoPayload);
                     }
-                } else if (requestCode == FingerprintAuthenticationActivity.REQUEST_CODE_AUTHENTICATION) {
-                    String dataDecryptResult = data.getParcelableExtra(FingerprintAuthenticationActivity.EXTRA_DECRYPTION_RESULTS);
-                    String email = mActivityLoginBinding.etEmail.getText().toString();
-                    String password = dataDecryptResult;
-                    DeviceInfoPayload deviceInfoPayload = new DeviceInfoPayload(getApplicationContext());
-                    mLoginViewModel.login(email, password, deviceInfoPayload);
                 } else {
                     //
                     // Handle failures, cancellation
@@ -345,6 +364,12 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
                 }
 
                 handleZoomAuthenticationResult(zoomAuthenticationResult);
+            } else if (requestCode == FingerprintAuthenticationActivity.REQUEST_CODE_AUTHENTICATION) {
+                String dataDecryptResult = data.getStringExtra(FingerprintAuthenticationActivity.EXTRA_DECRYPTION_RESULTS);
+                String email = mActivityLoginBinding.etEmail.getText().toString();
+                String password = dataDecryptResult;
+                DeviceInfoPayload deviceInfoPayload = new DeviceInfoPayload(getApplicationContext());
+                mLoginViewModel.login(email, password, deviceInfoPayload);
             }
         }
     }

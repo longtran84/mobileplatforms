@@ -18,18 +18,23 @@ package vn.fintechviet.mobileplatforms.data.remote;
 import com.google.gson.JsonObject;
 
 import io.reactivex.Single;
+import retrofit2.http.Body;
+import retrofit2.http.Query;
 import vn.fintechviet.mobileplatforms.data.model.api.AccountBalanceResponse;
+import vn.fintechviet.mobileplatforms.data.model.api.AccountVerificationResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.ChangePasswordRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.ChangePasswordResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.CheckUpdateRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.CheckUpdateResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.ForgotPasswordResponse;
+import vn.fintechviet.mobileplatforms.data.model.api.HelpResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.LoginRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.LoginResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.LogoutResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.LookupDocumentResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.LookupRegisterRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.LookupRegisterResponse;
+import vn.fintechviet.mobileplatforms.data.model.api.MessagesDetailResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.MessagesResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.ModulesResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.OBRResponse;
@@ -44,6 +49,8 @@ import vn.fintechviet.mobileplatforms.data.model.api.ReminderRegisterResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.UpdateStatusRegisterRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.UpdateStatusRegisterResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.UserModulesResponse;
+import vn.fintechviet.mobileplatforms.data.model.api.UserProfile;
+import vn.fintechviet.mobileplatforms.data.model.api.VersionManagerResponse;
 import vn.fintechviet.mobileplatforms.data.model.system.DeviceInfoPayload;
 
 /**
@@ -87,6 +94,17 @@ public interface ApiHelper {
     Single<ProcessRegisterResponse> doServerProcessRegisterApiCall(ProcessRegisterRequest processRegisterRequest);
 
     Single<UpdateStatusRegisterResponse> doServerUpdateStatusRegisterApiCall(UpdateStatusRegisterRequest updateStatusRegisterRequest);
+
+    Single<MessagesDetailResponse> doServerMessagesDetailApiCall(String id);
+
+    Single<VersionManagerResponse> doServerVersionManagerApiCall(String appCode);
+
+    Single<AccountVerificationResponse> doServerAccountVerificationApiCall(String serialNumber);
+
+    Single<ProfileResponse> doServerUserProfileUpdateApiCall(UserProfile userProfile);
+
+    Single<HelpResponse> doServerHelpApiCall();
+
 
 
     Single<JsonObject> sources();

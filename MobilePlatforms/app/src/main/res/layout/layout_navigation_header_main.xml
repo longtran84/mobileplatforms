@@ -35,11 +35,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/image_view_header_background" />
+            android:background="@color/colorPrimary" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/image_view_profile_id"
@@ -51,26 +53,30 @@
 
             <LinearLayout
                 android:id="@+id/linear_layout_account_information"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/profile_height"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:gravity="center|left"
                 android:layout_toEndOf="@+id/image_view_profile_id"
+                android:gravity="center|left"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textViewNavigationHeader"
-                    android:layout_width="match_parent"
+                    style="@style/TextStyle.Heading"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.userName}"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/website"
+                    style="@style/TextStyle.Heading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.userEmail}" />
+                    android:text="@{viewModel.userEmail}"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 

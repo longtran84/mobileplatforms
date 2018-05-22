@@ -117,6 +117,7 @@ public class MessagesViewModel extends BaseViewModel<MessagesNavigator> {
      *
      */
     private void loadMessages() {
+        setIsLoading(true);
         String accessToken = getDataManager().getAccessToken().trim();
         getCompositeDisposable().add(getDataManager()
                 .doServerMessagesApiCall(accessToken)
@@ -127,8 +128,9 @@ public class MessagesViewModel extends BaseViewModel<MessagesNavigator> {
                         List<Messages> listMessages = messagesResponse.getListData();
                         mutableLiveDataListMessages.setValue(listMessages);
                     }
+                    setIsLoading(false);
                 }, throwable -> {
-
+                    setIsLoading(false);
                 }));
     }
 }

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:orientation="horizontal"
+    android:id="@+id/tabContainer"
+    android:layout_alignParentBottom="true"
+    android:background="@android:color/transparent"
+    android:baselineAligned="false">
+
+    <LinearLayout
+        android:id="@+id/pinTab"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="2dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <TextView android:id="@+id/pinImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/zoom_sdk_icon_keypad"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="2dp"/>
+
+        <TextView
+            android:id="@+id/pinText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_gravity="center"
+            android:text="@string/zoom_auth_tab_pin"
+            android:layout_marginBottom="2dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fingerTab"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="2dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <TextView android:id="@+id/fingerImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/zoom_sdk_icon_fingerprint"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="2dp"/>
+
+        <TextView
+            android:id="@+id/fingerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_gravity="center"
+            android:text="@string/zoom_auth_tab_fingerprint"
+            android:layout_marginBottom="2dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/zoomTab"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="2dp"
+        android:layout_weight="1">
+
+        <TextView android:id="@+id/zoomImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/zoom_sdk_icon_selfie"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="2dp"/>
+
+        <TextView
+            android:id="@+id/zoomText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_gravity="center"
+            android:text="@string/zoom_auth_tab_zoom"
+            android:layout_marginBottom="2dp"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

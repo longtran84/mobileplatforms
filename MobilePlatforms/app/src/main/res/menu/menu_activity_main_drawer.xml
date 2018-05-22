@@ -22,18 +22,24 @@
         <item
             android:id="@+id/navigation_reminder_register_id"
             android:checked="false"
+            android:enabled="false"
+            android:visible="false"
             android:icon="@drawable/ic_reminder_white_24dp"
             android:title="@string/navigation_reminder_register" />
 
         <item
             android:id="@+id/navigation_registration_process_id"
             android:checked="false"
+            android:enabled="false"
+            android:visible="false"
             android:icon="@drawable/account_plus"
             android:title="@string/navigation_registration_process" />
 
         <item
             android:id="@+id/navigation_registration_lookup_id"
             android:checked="false"
+            android:enabled="false"
+            android:visible="false"
             android:icon="@drawable/account_search"
             android:title="@string/navigation_registration_lookup" />
 
@@ -42,6 +48,12 @@
             android:checked="false"
             android:icon="@drawable/ic_home_black_24dp"
             android:title="@string/share_information" />
+
+        <item
+            android:id="@+id/navigation_version_manager_id"
+            android:checked="false"
+            android:icon="@drawable/update"
+            android:title="@string/version_manager" />
     </group>
 
     <group

@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/pinPadTitle"
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:textColor="#ffffff"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/pinNumbers">
+        <ToggleButton
+            android:id="@+id/pinCode1"
+            style="@style/zoom_pin_number"/>
+        <ToggleButton
+            android:id="@+id/pinCode2"
+            style="@style/zoom_pin_number"/>
+        <ToggleButton
+            android:id="@+id/pinCode3"
+            style="@style/zoom_pin_number"/>
+        <ToggleButton
+            android:id="@+id/pinCode4"
+            style="@style/zoom_pin_number"/>
+        <ToggleButton
+            android:id="@+id/pinCode5"
+            style="@style/zoom_pin_number"
+            android:visibility="gone"/>
+        <ToggleButton
+            android:id="@+id/pinCode6"
+            style="@style/zoom_pin_number"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -17,6 +17,7 @@
             style="@style/TextStyle"
             android:layout_width="0dp"
             android:layout_weight="0.5"
+            android:textAlignment="center"
             android:layout_height="wrap_content"
             android:text="@string/app_name" />
 

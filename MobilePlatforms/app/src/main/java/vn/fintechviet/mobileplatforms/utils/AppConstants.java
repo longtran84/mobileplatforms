@@ -54,6 +54,10 @@ public final class AppConstants {
 
     public static final int TYPE_REGISTRATION_LOOKUP = 107;
 
+    public static final int TYPE_VERSION_MANAGER = 108;
+
+    public static final int TYPE_HELP = 109;
+
     private AppConstants() {
         // This utility class is not publicly instantiable
     }

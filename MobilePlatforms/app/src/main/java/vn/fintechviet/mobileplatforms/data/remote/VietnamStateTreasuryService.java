@@ -28,16 +28,19 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import vn.fintechviet.mobileplatforms.data.model.api.AccountBalanceResponse;
+import vn.fintechviet.mobileplatforms.data.model.api.AccountVerificationResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.ChangePasswordRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.ChangePasswordResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.CheckUpdateRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.CheckUpdateResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.ForgotPasswordResponse;
+import vn.fintechviet.mobileplatforms.data.model.api.HelpResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.LoginRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.LoginResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.LookupDocumentResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.LookupRegisterRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.LookupRegisterResponse;
+import vn.fintechviet.mobileplatforms.data.model.api.MessagesDetailResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.MessagesResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.ModulesResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.OBRResponse;
@@ -52,6 +55,8 @@ import vn.fintechviet.mobileplatforms.data.model.api.ReminderRegisterResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.UpdateStatusRegisterRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.UpdateStatusRegisterResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.UserModulesResponse;
+import vn.fintechviet.mobileplatforms.data.model.api.UserProfile;
+import vn.fintechviet.mobileplatforms.data.model.api.VersionManagerResponse;
 import vn.fintechviet.mobileplatforms.data.model.system.DeviceInfoPayload;
 
 public interface VietnamStateTreasuryService {
@@ -71,13 +76,18 @@ public interface VietnamStateTreasuryService {
     @POST("ftv-gateway/api/usr/authentication")
     Single<LoginResponse> doServerLoginApiCall(@Body LoginRequest.ServerLoginRequest request);
 
-    @Headers({"Content-Type: application/json", "apiCode: MOBILE_USER_POST"})
+    @Headers({"Content-Type: application/json", "apiCode: MOBILE_USER_CHANGE_PASSWORD_POST"})
     @POST("ftv-gateway/api")
     Single<ChangePasswordResponse> doServerChangePasswordApiCall(@Body ChangePasswordRequest request);
 
     @Headers({"Content-Type: application/json", "apiCode: MOBILE_USER_INFO_GET"})
     @GET("ftv-gateway/api")
     Single<ProfileResponse> doServerUserProfileApiCall(@Query("userName") String userName);
+
+
+    @Headers({"Content-Type: application/json", "apiCode: MOBILE_USER_UPDATE_INFO_POST"})
+    @POST("ftv-gateway/api")
+    Single<ProfileResponse> doServerUserProfileUpdateApiCall(@Body UserProfile userProfile);
 
     @Headers({"Content-Type: application/json", "apiCode: MOBILE_USER_DVQHNS_LIST_GET"})
     @GET("ftv-gateway/api")
@@ -136,4 +146,21 @@ public interface VietnamStateTreasuryService {
     @Headers({"Content-Type: application/json", "apiCode: MOBILE_SYS_USER_PROCESS_REGISTER_POST"})
     @POST("ftv-gateway/api")
     Single<UpdateStatusRegisterResponse> doServerUpdateStatusRegisterApiCall(@Body UpdateStatusRegisterRequest updateStatusRegisterRequest);
+
+    @Headers({"Content-Type: application/json", "apiCode: MOBILE_USER_NOTIFICATION_DETAIL_GET"})
+    @GET("ftv-gateway/api")
+    Single<MessagesDetailResponse> doServerMessagesDetailApiCall(@Query("id") String id);
+
+    @Headers({"Content-Type: application/json", "apiCode: MOBILE_APPLICATION_VERSIONS_GET"})
+    @GET("ftv-gateway/api")
+    Single<VersionManagerResponse> doServerVersionManagerApiCall(@Query("appCode") String appCode);
+
+    @Headers({"Content-Type: application/json", "apiCode: MOBILE_DEVICE_CHECK_STATUS_GET"})
+    @GET("ftv-gateway/api")
+    Single<AccountVerificationResponse> doServerAccountVerificationApiCall(@Query("serialNumber") String serialNumber);
+
+
+    @Headers({"Content-Type: application/json", "apiCode: MOBILE_USER_GUIDELINES_GET"})
+    @GET("ftv-gateway/api")
+    Single<HelpResponse> doServerHelpApiCall();
 }

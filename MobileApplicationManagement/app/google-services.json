@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "586644020228",
+    "firebase_url": "https://kbnnmanagement.firebaseio.com",
+    "project_id": "kbnnmanagement",
+    "storage_bucket": "kbnnmanagement.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586644020228:android:c57071efcca35250",
+        "android_client_info": {
+          "package_name": "vn.fintechviet.mobileplatforms.application.management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586644020228-c6u1iijgntntt20glmlfstp3pmgeud3v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9D-lSL6FpAHuamQqL7OBUUBi-fu1rH9M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

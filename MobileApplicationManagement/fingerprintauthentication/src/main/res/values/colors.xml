@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="grey" type="color">#808080</item>
+    <item name="darkgrey" type="color">#312f2f</item>
+    <item name="dark_grey" type="color">#535353</item>
+    <item name="settings" type="color">#1f2d35</item>
+    <item name="white" type="color">#ffffff</item>
+    <item name="black" type="color">#000000</item>
+    <item name="zoom" type="color">#1292C1</item>
+    <item name="custom_progress" type="color">#88042f68</item>
+    <item name="customBlue" type="color">#266BB6</item>
+    <color name="status_green">#19a700</color>
+    <color name="status_red">#ff0000</color>
+    <color name="status_white">#70ffffff</color>
+    <color name="not_selected_white">#50ffffff</color>
+    <color name="branding_zoom">#17d5d6</color>
+    <color name="branding_black">#262626</color>
+    <color name="branding_blue">#0c2956</color>
+    <color name="branding_red">#cc502d</color>
+    <color name="branding_green">#40b987</color>
+
+</resources>

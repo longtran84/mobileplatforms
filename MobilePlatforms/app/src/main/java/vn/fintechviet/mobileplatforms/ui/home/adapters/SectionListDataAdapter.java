@@ -23,22 +23,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.MultiTransformation;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.request.RequestOptions;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 import vn.fintechviet.mobileplatforms.R;
 import vn.fintechviet.mobileplatforms.data.model.api.UserApplicationModules;
-import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
-import vn.fintechviet.mobileplatforms.utils.RecyclerViewOnItemClickListener;
 import vn.fintechviet.mobileplatforms.utils.RecyclerViewOnObjectClickListener;
 
 public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListDataAdapter.SingleItemRowHolder> {
@@ -56,6 +55,12 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
     }
 
     public SectionListDataAdapter(Context context, List<UserApplicationModules> itemsList) {
+//        Collections.sort(itemsList, new Comparator<UserApplicationModules>() {
+//            @Override
+//            public int compare(final UserApplicationModules object1, final UserApplicationModules object2) {
+//                return object1.getCode().compareTo(object2.getCode());
+//            }
+//        });
         this.itemsList = itemsList;
         this.mContext = context;
     }

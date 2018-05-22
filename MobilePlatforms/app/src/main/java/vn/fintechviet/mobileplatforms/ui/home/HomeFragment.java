@@ -25,6 +25,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -126,10 +130,15 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         recyclerViewDataAdapter.setRecyclerViewOnObjectClickListener(new RecyclerViewOnObjectClickListener<UserApplicationModules>() {
             @Override
             public void onClick(View v, int position, UserApplicationModules object) {
-                if (object.getUuid().equalsIgnoreCase("edc8e050-bf74-4a1b-8b06-d4283cda19b9")) {
+                if (StringUtils.isBlank(object.getCode())) {
+                    return;
+                }
+                if (object.getCode().equalsIgnoreCase("FILE")) {
                     openLookupDocumentActivity();
-                } else {
+                } else if (object.getCode().equalsIgnoreCase("BALANCE")) {
                     openAccountBalanceActivity();
+                } else {
+
                 }
             }
         });
@@ -150,10 +159,12 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     private void subscribeToLiveData() {
         homeViewModel.getMutableLiveDataListSectionDataModel().observe(this, x -> spinnerCustomAdapter.setData(x));
         homeViewModel.getMutableLiveDataListUserModules().observe(this, userModulesList -> {
+            listUserModules.clear();
             List<UserModules> listUserModulesTemp = new ArrayList<>();
             for (UserModules userModules : userModulesList) {
                 if (userModules.getListUserApplicationModules() != null && userModules.getListUserApplicationModules().size() > 0) {
                     listUserModulesTemp.add(userModules);
+                    FirebaseMessaging.getInstance().subscribeToTopic(userModules.getCode());
                 }
             }
             listUserModules.addAll(listUserModulesTemp);

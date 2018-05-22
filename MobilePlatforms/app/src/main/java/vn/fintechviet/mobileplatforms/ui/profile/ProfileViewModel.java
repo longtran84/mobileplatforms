@@ -129,7 +129,19 @@ public class ProfileViewModel extends BaseViewModel<ProfileNavigator> {
      * @param userProfile
      */
     protected void profileUpdate(UserProfile userProfile){
+        String accessToken = getDataManager().getAccessToken().trim();
+        userProfile.setUserName(accessToken);
+        getCompositeDisposable().add(getDataManager()
+                .doServerUserProfileUpdateApiCall(userProfile)
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(profileResponse -> {
+                    if (profileResponse != null) {
 
+                    }
+                }, throwable -> {
+                    throwable.printStackTrace();
+                }));
     }
 
 }

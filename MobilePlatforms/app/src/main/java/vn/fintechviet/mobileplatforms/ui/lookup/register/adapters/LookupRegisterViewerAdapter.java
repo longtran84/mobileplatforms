@@ -90,7 +90,7 @@ public class LookupRegisterViewerAdapter extends RecyclerView.Adapter<RecyclerVi
                     = (LookupRegisterViewerViewHolder) holder;
             final LookupRegister articlesItem = itemList.get(position);
             if (null != articlesItem) {
-                conversationViewHolder.textViewOrderNumber.setText(String.valueOf(position));
+                conversationViewHolder.textViewOrderNumber.setText(String.valueOf(position + 1));
                 if (!StringUtils.isBlank(articlesItem.getRegistrationDate())) {
                     conversationViewHolder.textViewRegistrationDate.setText(articlesItem.getRegistrationDate().trim());
                 } else {

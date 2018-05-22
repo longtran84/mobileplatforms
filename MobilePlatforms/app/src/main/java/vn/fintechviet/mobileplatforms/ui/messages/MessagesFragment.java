@@ -16,6 +16,9 @@
 
 package vn.fintechviet.mobileplatforms.ui.messages;
 
+import android.content.Intent;
+import android.graphics.DashPathEffect;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,15 +26,25 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+
 import javax.inject.Inject;
 
 import vn.fintechviet.mobileplatforms.BR;
 import vn.fintechviet.mobileplatforms.R;
+import vn.fintechviet.mobileplatforms.data.model.api.Messages;
 import vn.fintechviet.mobileplatforms.data.model.api.OBR;
 import vn.fintechviet.mobileplatforms.databinding.FragmentMessagesBinding;
 import vn.fintechviet.mobileplatforms.ui.base.BaseFragment;
 import vn.fintechviet.mobileplatforms.ui.messages.adapters.MessagesViewerAdapter;
+import vn.fintechviet.mobileplatforms.ui.messages.details.MessagesDetailActivity;
+import vn.fintechviet.mobileplatforms.utils.JDateFormat;
 import vn.fintechviet.mobileplatforms.utils.RecyclerViewOnItemClickListener;
+import vn.fintechviet.mobileplatforms.utils.RecyclerViewOnObjectClickListener;
 import vn.fintechviet.mobileplatforms.utils.adapter.SpinnerCustomAdapter;
 
 /**
@@ -86,14 +99,23 @@ public class MessagesFragment extends BaseFragment<FragmentMessagesBinding, Mess
         spinnerCustomAdapter = new SpinnerCustomAdapter<OBR>(getActivity(), android.R.layout.simple_spinner_item);
         spinnerCustomAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         fragmentMessagesBinding.appCompatSpinnerOrganizationalBudgetRelationship.setAdapter(spinnerCustomAdapter);
-        messagesViewerAdapter = new MessagesViewerAdapter(getContext(), new RecyclerViewOnItemClickListener() {
+        messagesViewerAdapter = new MessagesViewerAdapter(getContext(), new RecyclerViewOnObjectClickListener<Messages>() {
             @Override
-            public void onClick(View v, int position) {
-
+            public void onClick(View v, int position, Messages messages) {
+                Intent intent = MessagesDetailActivity.newIntent(getActivity(), messages);
+                startActivity(intent);
             }
         });
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         fragmentMessagesBinding.recyclerViewMessages.setLayoutManager(mLayoutManager);
+        fragmentMessagesBinding.recyclerViewMessages.setHasFixedSize(true);
+        Paint paint = new Paint();
+        paint.setStrokeWidth(1);
+        paint.setColor(getResources().getColor(R.color.black10));
+        paint.setAntiAlias(true);
+        paint.setPathEffect(new DashPathEffect(new float[]{25.0f, 25.0f}, 0));
+        fragmentMessagesBinding.recyclerViewMessages.addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(getActivity()).paint(paint).build());
         fragmentMessagesBinding.recyclerViewMessages.setItemAnimator(new DefaultItemAnimator());
         fragmentMessagesBinding.recyclerViewMessages.setAdapter(messagesViewerAdapter);
         subscribeToLiveData();
@@ -104,7 +126,16 @@ public class MessagesFragment extends BaseFragment<FragmentMessagesBinding, Mess
      */
     private void subscribeToLiveData() {
         messagesViewModel.getMutableLiveDataListSectionDataModel().observe(this, x -> spinnerCustomAdapter.setData(x));
-        messagesViewModel.getMutableLiveDataListMessages().observe(this, x -> messagesViewerAdapter.setData(x));
+        messagesViewModel.getMutableLiveDataListMessages().observe(this, x ->{
+            Collections.sort(x, new Comparator<Messages>() {
+                public int compare(Messages o1, Messages o2) {
+                    Date date1 = JDateFormat.fromString(o1.getApproveDate(), "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+                    Date date2 = JDateFormat.fromString(o2.getApproveDate(), "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+                    return date2.compareTo(date1);
+                }
+            });
+            messagesViewerAdapter.setData(x);
+        });
     }
 
     @Override

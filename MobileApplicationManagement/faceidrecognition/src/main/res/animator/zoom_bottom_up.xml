@@ -1,0 +1,7 @@
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:interpolator/decelerate_quad"
+    android:valueFrom="10000"
+    android:valueTo="0"
+    android:valueType="floatType"
+    android:propertyName="translationY"
+    android:duration="600" />

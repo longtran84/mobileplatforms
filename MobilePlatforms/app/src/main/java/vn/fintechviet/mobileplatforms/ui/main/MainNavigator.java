@@ -25,4 +25,8 @@ public interface MainNavigator {
     void handleError(Throwable throwable);
 
     void openLoginActivity();
+
+    void accountSuspension();
+
+    void accountActive();
 }

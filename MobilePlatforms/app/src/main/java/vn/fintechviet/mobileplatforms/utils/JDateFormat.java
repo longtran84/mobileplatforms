@@ -166,13 +166,14 @@ public class JDateFormat {
      *
      * @param dateString
      * @param expectedPattern
+     * https://vladmihalcea.com/a-beginners-guide-to-java-time-zone-handling/
      * @return
      */
     public static String formatDate(String dateString, String expectedPattern) {
         Date date;
         String formattedDate = dateString;
         try {
-            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()).parse(dateString);
+            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault()).parse(dateString);//yyyy-MM-dd'T'HH:mm:ss
             formattedDate = new SimpleDateFormat(expectedPattern, Locale.getDefault()).format(date);
         } catch (Exception e) {
             LogHelper.d(JDateFormat.class.getName(), e.toString());
@@ -199,6 +200,22 @@ public class JDateFormat {
         return date;
     }
 
+    /****
+     *
+     * @param dateString
+     * @return
+     */
+    public static Date fromString(String dateString, String pattern) {
+        Date date;
+        try {
+            date = new SimpleDateFormat(pattern, Locale.getDefault()).parse(dateString);//yyyy-MM-dd'T'HH:mm:ss
+        } catch (Exception e) {
+            LogHelper.d(JDateFormat.class.getName(), e.toString());
+            date = new Date(System.currentTimeMillis());
+        }
+
+        return date;
+    }
     /***
      *
      * @param dateString

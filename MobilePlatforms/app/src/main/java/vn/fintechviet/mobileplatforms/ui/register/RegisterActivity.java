@@ -105,7 +105,7 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding, Regi
 
     @Override
     public void handleError(Throwable throwable) {
-         // handle error
+        // handle error
         getMaterialDialogAlert(this, getString(R.string.register_error_warning),
                 getString(R.string.register_error)).show();
     }
@@ -114,11 +114,11 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding, Regi
     public void handleSuccessfully() {
         getMaterialDialogAlert(this, getString(R.string.register_title_notification),
                 getString(R.string.register_notification_successfully), new MaterialDialog.SingleButtonCallback() {
-            @Override
-            public void onClick(@android.support.annotation.NonNull MaterialDialog dialog, @android.support.annotation.NonNull DialogAction which) {
-                openLoginActivity();
-            }
-        }).show();
+                    @Override
+                    public void onClick(@android.support.annotation.NonNull MaterialDialog dialog, @android.support.annotation.NonNull DialogAction which) {
+                        openLoginActivity();
+                    }
+                }).show();
     }
 
     @Override
@@ -163,7 +163,7 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding, Regi
             activityRegisterBinding.registerPassword.setError(getString(R.string.password_confirmation_password_do_not_match));
             activityRegisterBinding.registerConfirmPassword.setError(getString(R.string.password_confirmation_password_do_not_match));
         } else if (listModule.size() <= 0) {
-            //activityRegisterBinding.appCompatSpinnerModule.setBackgroundColor(Color.RED);
+            activityRegisterBinding.appCompatTextViewChooseApp.setTextColor(Color.RED);
         } else {
             registerViewModel.registerAccount(registerAccountRequest);
             activityRegisterBinding.appCompatCheckBoxVerifyReCaptcha.setBackgroundResource(R.drawable.square_outline);
@@ -282,7 +282,6 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding, Regi
                                 .subscribe(new Consumer<Integer>() {
                                     @Override
                                     public void accept(Integer integer) throws Exception {
-                                        faceIDIdentification.deleteAllEnrollments(RegisterActivity.this);
                                         activityRegisterBinding.appCompatImageViewFaceIDRecognition.setColorFilter(Color.RED);
                                         activityRegisterBinding.appCompatImageViewFaceIDRecognition.setVisibility(View.VISIBLE);
                                     }
@@ -311,7 +310,6 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding, Regi
                                 .subscribe(new Consumer<Integer>() {
                                     @Override
                                     public void accept(Integer integer) throws Exception {
-                                        faceIDIdentification.deleteAllEnrollments(RegisterActivity.this);
                                         activityRegisterBinding.appCompatImageViewFaceIDRecognition.setColorFilter(Color.RED);
                                         activityRegisterBinding.appCompatImageViewFaceIDRecognition.setVisibility(View.VISIBLE);
                                     }
@@ -385,6 +383,7 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding, Regi
                             //Log.i(TAG, i + " : " + items.get(i).getName() + " : " + items.get(i).isSelected());
                         }
                     }
+                    activityRegisterBinding.appCompatTextViewChooseApp.setTextColor(Color.BLACK);
                 }
             });
         });
@@ -472,8 +471,6 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding, Regi
                                             activityRegisterBinding.appCompatImageViewFaceIDRecognition.setVisibility(View.VISIBLE);
                                         }
                                     }));
-                } else if (requestCode == FingerprintAuthenticationActivity.REQUEST_CODE_AUTHENTICATION) {
-                    registerViewModel.getDataManager().setFingerprintDataEncrypt(data.getParcelableExtra(FingerprintAuthenticationActivity.EXTRA_ENCRYPTION_RESULTS));
                 } else {
                     //
                     // Handle failures, cancellation
@@ -484,6 +481,14 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding, Regi
                 // Handle the enrollment result
                 //
                 handleZoomEnrollmentResult(zoomEnrollmentResult);
+            } else if (requestCode == FingerprintAuthenticationActivity.REQUEST_CODE_AUTHENTICATION) {
+                registerViewModel.getDataManager().setFingerprintDataEncrypt(data.getStringExtra(FingerprintAuthenticationActivity.EXTRA_ENCRYPTION_RESULTS));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    activityRegisterBinding.appCompatImageViewFingerprintRecognition.setColorFilter(getResources().getColor(R.color.colorPrimary, getTheme()));
+                } else {
+                    activityRegisterBinding.appCompatImageViewFingerprintRecognition.setColorFilter(getResources().getColor(R.color.colorPrimary));
+                }
+                activityRegisterBinding.appCompatImageViewFingerprintRecognition.setVisibility(View.VISIBLE);
             }
         }
     }

@@ -17,6 +17,7 @@ package vn.fintechviet.mobileplatforms.ui.messages.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import vn.fintechviet.mobileplatforms.R;
@@ -26,9 +27,11 @@ import vn.fintechviet.mobileplatforms.utils.RecyclerViewOnItemClickListener;
  * Created by longtran on 17/01/2017.
  */
 
-public class MessagesViewerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class MessagesViewerViewHolder extends RecyclerView.ViewHolder{
 
-    private RecyclerViewOnItemClickListener recyclerViewOnItemClickListener;
+    public View itemView;
+
+    public ImageView itemImage;
 
     public TextView textViewTitle;
 
@@ -36,18 +39,16 @@ public class MessagesViewerViewHolder extends RecyclerView.ViewHolder implements
 
     public TextView textViewPublishData;
 
-    public MessagesViewerViewHolder(View itemView,
-                                    RecyclerViewOnItemClickListener recyclerViewOnItemClickListener) {
+    /**
+     *
+     * @param itemView
+     */
+    public MessagesViewerViewHolder(View itemView) {
         super(itemView);
-        this.recyclerViewOnItemClickListener = recyclerViewOnItemClickListener;
-        textViewTitle = (TextView) itemView.findViewById(R.id.text_view_title_id);
-        textViewDescription = (TextView) itemView.findViewById(R.id.text_view_description_id);
-        textViewPublishData = (TextView) itemView.findViewById(R.id.text_view_publish_date_id);
-        itemView.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        recyclerViewOnItemClickListener.onClick(v, getAdapterPosition());
+        this.itemView = itemView;
+        this.itemImage = (ImageView) itemView.findViewById(R.id.image_view_app_icon_id);
+        this.textViewTitle = (TextView) itemView.findViewById(R.id.text_view_title_id);
+        this.textViewDescription = (TextView) itemView.findViewById(R.id.text_view_description_id);
+        this.textViewPublishData = (TextView) itemView.findViewById(R.id.text_view_publish_date_id);
     }
 }

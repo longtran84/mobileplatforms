@@ -1,0 +1,263 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <RelativeLayout
+        android:id="@+id/zoomDialogBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.90">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/zoomDialogBackgroundImage"
+                android:src="@drawable/zoom_logo_big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.08"
+                android:layout_gravity="center"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/zoomDialogForeground"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <!-- Action button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/bottomLayout"
+            android:orientation="vertical"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:text=""
+                android:id="@+id/zoomDialogActionButton"
+                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:textSize="20sp"
+                android:textColor="@drawable/zoom_button_text_state"
+                android:layout_gravity="center_horizontal"
+                android:textAllCaps="true"
+                android:background="@drawable/zoom_button_background"
+                style="?android:attr/borderlessButtonStyle"
+                android:duplicateParentState="false" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottomLayout"
+            android:clipChildren="false">
+
+            <FrameLayout
+                android:id="@+id/centerContentFrameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_centerInParent="true">
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/centerContentView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:clipChildren="false">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/zoomDialogIcon"
+                        android:layout_gravity="center"
+                        android:textSize="70sp"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/zoomDialogIconSubtext"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@id/zoomDialogIcon"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:id="@+id/zoomDialogImage"
+                        android:layout_gravity="center"
+                        android:textSize="70sp"
+                        android:gravity="center"
+                        tools:ignore="ContentDescription" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/zoomDialogHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:includeFontPadding="false"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textSize="32sp"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="35dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:text=""/>
+
+                <TextView
+                    android:id="@+id/zoomDialogText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textSize="20sp"
+                    android:lineSpacingMultiplier="1.1"
+                    android:textColor="#ffffff"
+                    android:gravity="center"
+                    android:text=""/>
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/zoomDialogText2"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textSize="20sp"
+                    android:lineSpacingMultiplier="1.1"
+                    android:textColor="#ffffff"
+                    android:gravity="center"
+                    android:text=""/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            android:layout_above="@id/bottomLayout">
+
+            <TextView
+                android:id="@+id/zoomDialogText4"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:text=""
+                android:textColor="#ffffff"
+                android:layout_centerInParent="true"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-light"
+                android:textSize="14sp"
+                android:lineSpacingMultiplier="1.1"
+                android:alpha="0.5"/>
+
+            <TextView
+                android:id="@+id/zoomDialogText3"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#ffffff"
+                android:layout_above="@id/zoomDialogText4"
+                android:layout_centerInParent="true"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:fontFamily="sans-serif-light"
+                android:textSize="20sp"
+                android:lineSpacingMultiplier="1.1"
+                android:gravity="center" />
+
+
+        </RelativeLayout>
+
+        <!-- Back button (down here so it renders on top always) -->
+        <TextView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zoom_sdk_icon_close"
+            android:contentDescription="Back button"
+            android:gravity="center"
+            android:textSize="45sp"
+            android:includeFontPadding="false"
+            android:clickable="true"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:focusable="true" />
+
+        <LinearLayout
+            android:visibility="invisible"
+            android:id="@+id/warningBanner"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/zoom_warning_background"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/warningIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:text="@string/zoom_sdk_icon_attention_fill"
+                android:gravity="center"/>
+
+            <view class="com.facetec.zoom.sdk.F"
+                android:id="@+id/warningText"
+                android:text="@string/zoom_retry_warning_message"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="17sp"
+                android:fontFamily="sans-serif-light"
+                android:maxLines="1"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

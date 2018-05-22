@@ -28,6 +28,7 @@ import java.util.List;
 
 import vn.fintechviet.mobileplatforms.R;
 import vn.fintechviet.mobileplatforms.data.model.api.AccountBalance;
+import vn.fintechviet.mobileplatforms.utils.JDateFormat;
 import vn.fintechviet.mobileplatforms.utils.ProgressViewHolder;
 import vn.fintechviet.mobileplatforms.utils.RecyclerViewOnItemClickListener;
 
@@ -91,8 +92,10 @@ public class AccountBalanceViewerAdapter extends RecyclerView.Adapter<RecyclerVi
                     = (AccountBalanceViewerViewHolder) holder;
             final AccountBalance articlesItem = itemList.get(position);
             if (null != articlesItem) {
+                conversationViewHolder.textViewOrder.setText(String.valueOf(position + 1));
                 if (!StringUtils.isBlank(articlesItem.getChangeDate())) {
-                    conversationViewHolder.textViewDateTime.setText(articlesItem.getChangeDate().trim());
+                    conversationViewHolder.textViewDateTime.setText(JDateFormat.formatDate(articlesItem.getChangeDate().trim(),
+                            "dd/MM/yyyy HH:mm:ss","dd/MM/yyyy"));
                 } else {
                     conversationViewHolder.textViewDateTime.setText("");
                 }

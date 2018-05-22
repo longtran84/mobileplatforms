@@ -25,4 +25,8 @@ public interface SplashNavigator {
     void openLoginActivity();
 
     void openMainActivity();
+
+    void accountSuspension();
+
+    void accountActive();
 }

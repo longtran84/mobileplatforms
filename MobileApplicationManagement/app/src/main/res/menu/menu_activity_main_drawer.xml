@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/navigation_open_account_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_profile_id"
+            android:checked="false"
+            android:icon="@drawable/ic_personal_information"
+            android:title="@string/personal_information" />
+        <item
+            android:id="@+id/navigation_change_your_password_id"
+            android:checked="false"
+            android:visible="false"
+            android:enabled="false"
+            android:icon="@drawable/ic_change_your_password"
+            android:title="@string/change_your_password" />
+    </group>
+
+    <group
+        android:id="@+id/navigation_function_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_reminder_register_id"
+            android:checked="true"
+            android:icon="@drawable/ic_reminder_white_24dp"
+            android:title="@string/navigation_reminder_register" />
+
+        <item
+            android:id="@+id/navigation_registration_process_id"
+            android:checked="false"
+            android:icon="@drawable/account_plus"
+            android:title="@string/navigation_registration_process" />
+
+        <item
+            android:id="@+id/navigation_registration_lookup_id"
+            android:checked="false"
+            android:icon="@drawable/account_search"
+            android:title="@string/navigation_registration_lookup" />
+
+        <item
+            android:id="@+id/navigation_share_information_id"
+            android:checked="false"
+            android:visible="false"
+            android:enabled="false"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/share_information" />
+    </group>
+
+    <group
+        android:id="@+id/navigation_setting_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_messages_id"
+            android:checked="false"
+            android:icon="@drawable/ic_message_alert"
+            android:title="@string/bottom_navigation_message" />
+        <item
+            android:id="@+id/navigation_help_tutorial_id"
+            android:checked="false"
+            android:icon="@drawable/ic_help_tutorial"
+            android:title="@string/help_tutorial" />
+        <item
+            android:id="@+id/navigation_sign_out_id"
+            android:checked="false"
+            android:icon="@drawable/ic_sign_out"
+            android:title="@string/sign_out" />
+    </group>
+
+</menu>

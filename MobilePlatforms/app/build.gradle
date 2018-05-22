@@ -37,7 +37,7 @@ android {
     buildTypes {
         debug {
             buildConfigField("String", "BASE_URL", "\"https://newsapi.org/v2/\"")
-            buildConfigField("String", "END_POINT", "\"http://192.168.100.226:8080/\"")
+            buildConfigField("String", "END_POINT", "\"http://222.252.16.132:9999/\"")
             buildConfigField("String", "API_KEY", "\"01a1c7f0a67344e89229a6d20f3eedbb\"")
             buildConfigField "boolean", "SYSTEM_APP_ENABLED", "true"
             buildConfigField "boolean", "DEBUG_MODE_ENABLED", "true"
@@ -198,6 +198,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.itextpdf/itextpdf
     //implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.0.6'
+    implementation 'com.github.bmelnychuk:atv:1.2.+'
+    implementation 'com.github.johnkil.print:print:1.2.2'
 
 }
 

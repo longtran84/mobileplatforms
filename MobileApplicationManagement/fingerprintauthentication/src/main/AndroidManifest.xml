@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.mtramin.rxfingerprint.sdk"
+    android:versionCode="1"
+    android:versionName="6.2.3">
+
+    <uses-sdk
+        android:minSdkVersion="18"
+        android:targetSdkVersion="27"
+        tools:ignore="GradleOverrides" />
+
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
+    <application
+        android:hardwareAccelerated="true"
+        android:largeHeap="true">
+        <activity
+            android:name="com.mtramin.rxfingerprint.sdk.FingerprintAuthenticationActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+
+    </application>
+</manifest>

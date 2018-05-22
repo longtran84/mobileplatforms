@@ -25,17 +25,20 @@ import com.google.gson.reflect.TypeToken;
 import vn.fintechviet.mobileplatforms.data.local.db.DbHelper;
 import vn.fintechviet.mobileplatforms.data.local.prefs.PreferencesHelper;
 import vn.fintechviet.mobileplatforms.data.model.api.AccountBalanceResponse;
+import vn.fintechviet.mobileplatforms.data.model.api.AccountVerificationResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.ChangePasswordRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.ChangePasswordResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.CheckUpdateRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.CheckUpdateResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.ForgotPasswordResponse;
+import vn.fintechviet.mobileplatforms.data.model.api.HelpResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.LoginRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.LoginResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.LogoutResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.LookupDocumentResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.LookupRegisterRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.LookupRegisterResponse;
+import vn.fintechviet.mobileplatforms.data.model.api.MessagesDetailResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.MessagesResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.ModulesResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.OBRResponse;
@@ -50,6 +53,8 @@ import vn.fintechviet.mobileplatforms.data.model.api.ReminderRegisterResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.UpdateStatusRegisterRequest;
 import vn.fintechviet.mobileplatforms.data.model.api.UpdateStatusRegisterResponse;
 import vn.fintechviet.mobileplatforms.data.model.api.UserModulesResponse;
+import vn.fintechviet.mobileplatforms.data.model.api.UserProfile;
+import vn.fintechviet.mobileplatforms.data.model.api.VersionManagerResponse;
 import vn.fintechviet.mobileplatforms.data.model.db.Option;
 import vn.fintechviet.mobileplatforms.data.model.db.Question;
 import vn.fintechviet.mobileplatforms.data.model.db.User;
@@ -200,6 +205,31 @@ public class AppDataManager implements DataManager {
     @Override
     public Single<UpdateStatusRegisterResponse> doServerUpdateStatusRegisterApiCall(UpdateStatusRegisterRequest updateStatusRegisterRequest) {
         return mVietnamStateTreasuryService.doServerUpdateStatusRegisterApiCall(updateStatusRegisterRequest);
+    }
+
+    @Override
+    public Single<MessagesDetailResponse> doServerMessagesDetailApiCall(String id) {
+        return mVietnamStateTreasuryService.doServerMessagesDetailApiCall(id);
+    }
+
+    @Override
+    public Single<VersionManagerResponse> doServerVersionManagerApiCall(String appCode) {
+        return mVietnamStateTreasuryService.doServerVersionManagerApiCall(appCode);
+    }
+
+    @Override
+    public Single<AccountVerificationResponse> doServerAccountVerificationApiCall(String serialNumber) {
+        return mVietnamStateTreasuryService.doServerAccountVerificationApiCall(serialNumber);
+    }
+
+    @Override
+    public Single<ProfileResponse> doServerUserProfileUpdateApiCall(UserProfile userProfile) {
+        return mVietnamStateTreasuryService.doServerUserProfileUpdateApiCall(userProfile);
+    }
+
+    @Override
+    public Single<HelpResponse> doServerHelpApiCall() {
+        return mVietnamStateTreasuryService.doServerHelpApiCall();
     }
 
     @Override

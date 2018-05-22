@@ -156,7 +156,7 @@
 
     <style name="AppTab" parent="Widget.Design.TabLayout">
         <item name="android:theme">@style/ThemeOverlay.AppCompat.ActionBar</item>
-        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:minHeight">?android:attr/actionBarSize</item>
         <item name="tabTextAppearance">@style/AppTab.TextAppearance</item>
         <item name="tabIndicatorHeight">2dp</item>
         <item name="tabSelectedTextColor">@color/white</item>
@@ -183,6 +183,17 @@
         <item name="spn_arrowSwitchMode">true</item>
         <item name="spn_arrowAnimDuration">@android:integer/config_shortAnimTime</item>
         <item name="spn_arrowInterpolator">@android:anim/decelerate_interpolator</item>
+    </style>
+
+    <style name="TreeNodeStyleCustom">
+        <item name="android:paddingLeft">20dp</item>
+        <!--<item name="android:showDividers">middle</item>-->
+        <!--<item name="android:divider">@android:drawable/divider_horizontal_bright</item>-->
+    </style>
+
+    <style name="TreeNodeStyleDivided">
+        <item name="android:showDividers">middle</item>
+        <item name="android:divider">@android:drawable/divider_horizontal_bright</item>
     </style>
 
 </resources>

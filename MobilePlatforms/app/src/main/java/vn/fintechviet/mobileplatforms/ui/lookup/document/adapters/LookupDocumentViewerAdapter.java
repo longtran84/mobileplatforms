@@ -28,6 +28,7 @@ import java.util.List;
 
 import vn.fintechviet.mobileplatforms.R;
 import vn.fintechviet.mobileplatforms.data.model.api.LookupDocument;
+import vn.fintechviet.mobileplatforms.utils.JDateFormat;
 import vn.fintechviet.mobileplatforms.utils.ProgressViewHolder;
 import vn.fintechviet.mobileplatforms.utils.RecyclerViewOnItemClickListener;
 
@@ -92,7 +93,8 @@ public class LookupDocumentViewerAdapter extends RecyclerView.Adapter<RecyclerVi
             final LookupDocument articlesItem = itemList.get(position);
             if (null != articlesItem) {
                 if (!StringUtils.isBlank(articlesItem.getDate())) {
-                    conversationViewHolder.textViewDate.setText(articlesItem.getDate().trim());
+                    conversationViewHolder.textViewDate.setText(JDateFormat.formatDate(articlesItem.getDate().trim(),
+                            "dd/MM/yyyy HH:mm:ss","dd/MM/yyyy"));
                 } else {
                     conversationViewHolder.textViewDate.setText("");
                 }
