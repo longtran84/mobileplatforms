@@ -54,7 +54,9 @@ import android.webkit.WebView;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.net.NetworkInterface;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -497,6 +499,38 @@ public class DeviceInfo {
         }
     }
 
+    /**
+     *
+     * @return
+     */
+    private String getMacAddress() {
+        try {
+            List<NetworkInterface> all = Collections.list(NetworkInterface.getNetworkInterfaces());
+            for (NetworkInterface nif : all) {
+                if (!nif.getName().equalsIgnoreCase("wlan0")) continue;
+
+                byte[] macBytes = nif.getHardwareAddress();
+                if (macBytes == null) {
+                    return "";
+                }
+
+                StringBuilder res1 = new StringBuilder();
+                for (byte b : macBytes) {
+                    res1.append(String.format("%02X:",b));
+                }
+
+                if (res1.length() > 0) {
+                    res1.deleteCharAt(res1.length() - 1);
+                }
+                return res1.toString();
+            }
+        } catch (Exception ex) {
+        }
+        return "02:00:00:00:00:00";
+    }
+
+
+
     @SuppressWarnings("MissingPermission")
     public final String getWifiMacAddress(Context context) {
         if(!permissionUtils.isPermissionGranted(Manifest.permission.ACCESS_WIFI_STATE))
@@ -505,7 +539,7 @@ public class DeviceInfo {
         WifiManager manager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         WifiInfo info = manager.getConnectionInfo();
         String address = info.getMacAddress();
-        return address;
+        return getMacAddress();
     }
 
     public boolean isRunningOnEmulator() {

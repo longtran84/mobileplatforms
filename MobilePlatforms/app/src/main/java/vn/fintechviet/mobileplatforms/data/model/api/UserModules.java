@@ -43,6 +43,10 @@ public class UserModules implements Serializable {
     private String icon;
 
     @Expose
+    @SerializedName("sort")
+    private int sort;
+
+    @Expose
     @SerializedName("appApplicationModules")
     private List<UserApplicationModules> listUserApplicationModules;
 
@@ -86,5 +90,11 @@ public class UserModules implements Serializable {
         this.icon = icon;
     }
 
+    public int getSort() {
+        return sort;
+    }
 
+    public void setSort(int sort) {
+        this.sort = sort;
+    }
 }

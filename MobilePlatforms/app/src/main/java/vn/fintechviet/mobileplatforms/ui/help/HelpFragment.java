@@ -16,14 +16,18 @@
 
 package vn.fintechviet.mobileplatforms.ui.help;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
+
+import org.apache.commons.lang3.StringUtils;
 
 import javax.inject.Inject;
 
@@ -33,6 +37,8 @@ import vn.fintechviet.mobileplatforms.data.model.api.Help;
 import vn.fintechviet.mobileplatforms.data.model.api.HelpTreeLeaf;
 import vn.fintechviet.mobileplatforms.databinding.FragmentHelpBinding;
 import vn.fintechviet.mobileplatforms.ui.base.BaseFragment;
+import vn.fintechviet.mobileplatforms.ui.help.details.HelpDetailActivity;
+import vn.fintechviet.mobileplatforms.ui.help.holder.IconTreeItem;
 import vn.fintechviet.mobileplatforms.ui.help.holder.IconTreeItemHolder;
 
 /**
@@ -49,6 +55,7 @@ public class HelpFragment extends BaseFragment<FragmentHelpBinding, HelpViewMode
     private FragmentHelpBinding fragmentHelpBinding;
     private AndroidTreeView androidTreeView;
     private ViewGroup containerView;
+    private TreeNode root;
 
     public static HelpFragment newInstance() {
         Bundle args = new Bundle();
@@ -76,16 +83,25 @@ public class HelpFragment extends BaseFragment<FragmentHelpBinding, HelpViewMode
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         fragmentHelpBinding = getViewDataBinding();
-        subscribeToLiveData();
         containerView = (ViewGroup) fragmentHelpBinding.container;
-        helpViewModel.dataFetching();
+        root = TreeNode.root();
+        androidTreeView = new AndroidTreeView(getActivity(), root);
+        androidTreeView.setDefaultAnimation(false);
+        androidTreeView.setDefaultContainerStyle(R.style.TreeNodeStyleCustom);
+        androidTreeView.setDefaultViewHolder(IconTreeItemHolder.class);
+        androidTreeView.setDefaultNodeClickListener(nodeClickListener);
+        containerView.addView(androidTreeView.getView());
+        subscribeToLiveData();
     }
 
     private TreeNode.TreeNodeClickListener nodeClickListener = new TreeNode.TreeNodeClickListener() {
         @Override
         public void onClick(TreeNode node, Object value) {
-            IconTreeItemHolder.IconTreeItem item = (IconTreeItemHolder.IconTreeItem) value;
-            System.err.println("Last clicked: " + item.text);
+            IconTreeItem item = (IconTreeItem) value;
+            if(!StringUtils.isBlank(item.getBody())){
+                Intent intent = HelpDetailActivity.newIntent(getActivity(), item);
+                startActivity(intent);
+            }
         }
     };
 
@@ -93,26 +109,34 @@ public class HelpFragment extends BaseFragment<FragmentHelpBinding, HelpViewMode
      *
      */
     private void subscribeToLiveData() {
+        androidTreeView.removeNode(root);
         helpViewModel.getMutableLiveDataListHelp().observe(this, x -> {
-            TreeNode root = TreeNode.root();
             for (int i = 0; i < x.size(); i++) {
                 Help help = x.get(i);
-                TreeNode treeNodeRoot = new TreeNode(new IconTreeItemHolder.IconTreeItem(R.string.ic_laptop, help.getTitle(), false));
+                IconTreeItem iconTreeItemHolderIconTreeItemRoot = new IconTreeItem();
+                iconTreeItemHolderIconTreeItemRoot.setIcon(R.string.ic_laptop);
+                iconTreeItemHolderIconTreeItemRoot.setText(help.getTitle());
+                iconTreeItemHolderIconTreeItemRoot.setLeaf(false);
+                TreeNode treeNodeRoot = new TreeNode(iconTreeItemHolderIconTreeItemRoot);
                 for (int j = 0; j < help.getListTreeLeaf().size(); j++) {
                     HelpTreeLeaf helpTreeLeaf = help.getListTreeLeaf().get(j);
-                    TreeNode treeNodeHelpTreeLeafTitle = new TreeNode(new IconTreeItemHolder.IconTreeItem(R.string.ic_folder, helpTreeLeaf.getTitle(), false));
-                    TreeNode treeNodeHelpTreeLeaf = new TreeNode(new IconTreeItemHolder.IconTreeItem(R.string.ic_drive_file, helpTreeLeaf.getContent(), true));
-                    treeNodeHelpTreeLeafTitle.addChild(treeNodeHelpTreeLeaf);
-                    treeNodeRoot.addChild(treeNodeHelpTreeLeafTitle);
+//                    IconTreeItem iconTreeItemHolderIconTreeItemLeafTitle = new IconTreeItem();
+//                    iconTreeItemHolderIconTreeItemLeafTitle.setIcon(R.string.ic_folder);
+//                    iconTreeItemHolderIconTreeItemLeafTitle.setText(helpTreeLeaf.getTitle());
+//                    iconTreeItemHolderIconTreeItemLeafTitle.setLeaf(false);
+//                    TreeNode treeNodeHelpTreeLeafTitle = new TreeNode(iconTreeItemHolderIconTreeItemLeafTitle);
+                    IconTreeItem iconTreeItemHolderIconTreeItemLeaf = new IconTreeItem();
+                    iconTreeItemHolderIconTreeItemLeaf.setIcon(R.string.ic_drive_file);
+                    iconTreeItemHolderIconTreeItemLeaf.setText(helpTreeLeaf.getTitle());
+                    iconTreeItemHolderIconTreeItemLeaf.setBody(helpTreeLeaf.getContent());
+                    iconTreeItemHolderIconTreeItemLeaf.setLeaf(true);
+                    TreeNode treeNodeHelpTreeLeaf = new TreeNode(iconTreeItemHolderIconTreeItemLeaf);
+//                    treeNodeHelpTreeLeafTitle.addChild(treeNodeHelpTreeLeaf);
+                    treeNodeRoot.addChild(treeNodeHelpTreeLeaf);
                 }
-                root.addChildren(treeNodeRoot);
+                System.err.println("-------------" + help.getTitle());
+                androidTreeView.addNode(root, treeNodeRoot);
             }
-            androidTreeView = new AndroidTreeView(getActivity(), root);
-            androidTreeView.setDefaultAnimation(true);
-            androidTreeView.setDefaultContainerStyle(R.style.TreeNodeStyleCustom);
-            androidTreeView.setDefaultViewHolder(IconTreeItemHolder.class);
-            androidTreeView.setDefaultNodeClickListener(nodeClickListener);
-            containerView.addView(androidTreeView.getView());
         });
     }
 

@@ -24,6 +24,8 @@ import vn.fintechviet.mobileplatforms.ui.change.password.ChangePasswordFragmentP
 import vn.fintechviet.mobileplatforms.ui.forgot.password.ForgotPasswordActivity;
 import vn.fintechviet.mobileplatforms.ui.forgot.password.ForgotPasswordActivityModule;
 import vn.fintechviet.mobileplatforms.ui.help.HelpFragmentProvider;
+import vn.fintechviet.mobileplatforms.ui.help.details.HelpDetailActivity;
+import vn.fintechviet.mobileplatforms.ui.help.details.HelpDetailActivityModule;
 import vn.fintechviet.mobileplatforms.ui.home.HomeFragmentProvider;
 import vn.fintechviet.mobileplatforms.ui.login.LoginActivity;
 import vn.fintechviet.mobileplatforms.ui.login.LoginActivityModule;
@@ -42,6 +44,8 @@ import vn.fintechviet.mobileplatforms.ui.profile.ProfileFragmentProvider;
 import vn.fintechviet.mobileplatforms.ui.register.RegisterActivity;
 import vn.fintechviet.mobileplatforms.ui.register.RegisterActivityModule;
 import vn.fintechviet.mobileplatforms.ui.reminder.ReminderFragmentProvider;
+import vn.fintechviet.mobileplatforms.ui.settings.SettingActivity;
+import vn.fintechviet.mobileplatforms.ui.settings.SettingActivityModule;
 import vn.fintechviet.mobileplatforms.ui.splash.SplashActivity;
 import vn.fintechviet.mobileplatforms.ui.splash.SplashActivityModule;
 import vn.fintechviet.mobileplatforms.ui.version.management.VersionManagerFragmentProvider;
@@ -88,4 +92,10 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = MessagesDetailActivityModule.class)
     abstract MessagesDetailActivity bindMessagesDetailActivity();
+
+    @ContributesAndroidInjector(modules = SettingActivityModule.class)
+    abstract SettingActivity bindSettingActivity();
+
+    @ContributesAndroidInjector(modules = HelpDetailActivityModule.class)
+    abstract HelpDetailActivity bindHelpDetailActivity();
 }

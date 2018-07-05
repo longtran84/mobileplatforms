@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group
         android:id="@+id/navigation_open_account_group"
@@ -12,10 +13,10 @@
         <item
             android:id="@+id/navigation_change_your_password_id"
             android:checked="false"
-            android:visible="false"
             android:enabled="false"
             android:icon="@drawable/ic_change_your_password"
-            android:title="@string/change_your_password" />
+            android:title="@string/change_your_password"
+            android:visible="false" />
     </group>
 
     <group
@@ -25,7 +26,8 @@
             android:id="@+id/navigation_reminder_register_id"
             android:checked="true"
             android:icon="@drawable/ic_reminder_white_24dp"
-            android:title="@string/navigation_reminder_register" />
+            android:title="@string/navigation_reminder_register"
+            app:actionViewClass="android.widget.TextView"/>
 
         <item
             android:id="@+id/navigation_registration_process_id"
@@ -42,10 +44,10 @@
         <item
             android:id="@+id/navigation_share_information_id"
             android:checked="false"
-            android:visible="false"
             android:enabled="false"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="@string/share_information" />
+            android:title="@string/share_information"
+            android:visible="false" />
     </group>
 
     <group

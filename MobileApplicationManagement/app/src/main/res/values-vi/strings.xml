@@ -181,6 +181,9 @@
     <string name="process_register_dialog_message_approval_confirm">Bạn có chắc chắn phê duyệt không?</string>
     <string name="process_register_dialog_message_reject_confirm">Bạn có chắc chắn muốn từ chối không?</string>
 
+    <!--help detail-->
+    <string name="help_toolbar">Chi tiết</string>
+
     <!--messages detail-->
     <string name="messages_toolbar">Chi tiết thông báo</string>
 

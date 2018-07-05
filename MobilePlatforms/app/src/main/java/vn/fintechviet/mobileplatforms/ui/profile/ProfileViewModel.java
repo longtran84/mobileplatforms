@@ -97,13 +97,15 @@ public class ProfileViewModel extends BaseViewModel<ProfileNavigator> {
                 .subscribe(profileResponse -> {
                     if (profileResponse != null) {
                         UserProfile userProfile = profileResponse.getData();
-                        fullName.set(userProfile.getFullName());
-                        profileEmail.set(userProfile.getEmail());
-                        profilePosition.set(userProfile.getPosition());
-                        profileDepartment.set(userProfile.getDepartment());
-                        profilePhone.set(userProfile.getPosition());
-                        profileMobile.set(userProfile.getMobile());
-                        profileAddress.set(userProfile.getAddress());
+                        if (null != userProfile) {
+                            fullName.set(userProfile.getFullName());
+                            profileEmail.set(userProfile.getEmail());
+                            profilePosition.set(userProfile.getPosition());
+                            profileDepartment.set(userProfile.getDepartment());
+                            profilePhone.set(userProfile.getPosition());
+                            profileMobile.set(userProfile.getMobile());
+                            profileAddress.set(userProfile.getAddress());
+                        }
                     }
                 }, throwable -> {
                     throwable.printStackTrace();
@@ -125,10 +127,9 @@ public class ProfileViewModel extends BaseViewModel<ProfileNavigator> {
     }
 
     /**
-     *
      * @param userProfile
      */
-    protected void profileUpdate(UserProfile userProfile){
+    protected void profileUpdate(UserProfile userProfile) {
         String accessToken = getDataManager().getAccessToken().trim();
         userProfile.setUserName(accessToken);
         getCompositeDisposable().add(getDataManager()

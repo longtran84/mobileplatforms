@@ -30,6 +30,8 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -167,6 +169,12 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
                     FirebaseMessaging.getInstance().subscribeToTopic(userModules.getCode());
                 }
             }
+            Collections.sort(listUserModulesTemp, new Comparator<UserModules>() {
+                @Override
+                public int compare(final UserModules object1, final UserModules object2) {
+                    return object1.getSort() - object2.getSort();
+                }
+            });
             listUserModules.addAll(listUserModulesTemp);
             recyclerViewDataAdapter.notifyDataSetChanged();
         });

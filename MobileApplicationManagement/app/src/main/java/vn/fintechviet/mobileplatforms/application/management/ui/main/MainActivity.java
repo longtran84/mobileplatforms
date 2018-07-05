@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -30,11 +31,23 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -45,7 +58,10 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
+import me.leolin.shortcutbadger.ShortcutBadger;
 import me.yokeyword.fragmentation.SupportFragment;
+import q.rorbin.badgeview.Badge;
+import q.rorbin.badgeview.QBadgeView;
 import vn.fintechviet.mobileplatforms.application.management.BR;
 import vn.fintechviet.mobileplatforms.application.management.BuildConfig;
 import vn.fintechviet.mobileplatforms.application.management.R;
@@ -363,6 +379,70 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                             return false;
                     }
                 });
+        bindingBadge();
+    }
+
+    private Badge badge;
+
+    private void bindingBadge() {
+//        MenuItem item = mNavigationView.getMenu().findItem(R.id.navigation_reminder_register_id);
+//        MenuItemCompat.setActionView(item, R.layout.feed_update_count);
+//        RelativeLayout notifCount = (RelativeLayout) MenuItemCompat.getActionView(item);
+//        TextView tv = (TextView) notifCount.findViewById(R.id.textMenuItemCount);
+//        String count = "4";
+//        if (count != null) {
+//            tv.setText(count);
+//        }else{
+//            tv.setText("");
+//            item.setEnabled(false);
+//        }
+        TextView textViewBadge = (TextView) MenuItemCompat.getActionView(mNavigationView.getMenu().
+                findItem(R.id.navigation_reminder_register_id));
+        RelativeLayout.LayoutParams linearLayoutLayoutParams = new RelativeLayout.LayoutParams(64, 64);
+        textViewBadge.setPadding(5,5,5,5);
+        textViewBadge.setLayoutParams(linearLayoutLayoutParams);
+        textViewBadge.setBackground(getResources().getDrawable(R.drawable.vietnam_state_treasury));
+        textViewBadge.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+        textViewBadge.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        textViewBadge.setTextColor(Color.WHITE);
+        textViewBadge.setText("");
+        textViewBadge.setBackgroundResource(R.drawable.oval);
+        textViewBadge.setVisibility(View.GONE);
+//        Menu menuNav = mNavigationView.getMenu();
+//        MenuItem element = menuNav.findItem(R.id.navigation_reminder_register_id);
+//        String before = element.getTitle().toString();
+//
+//        String counter = Integer.toString(5);
+//        String s = before + "   " + counter + " ";
+//        SpannableString sColored = new SpannableString(s);
+//
+//        sColored.setSpan(new BackgroundColorSpan(Color.RED), s.length() - 3, s.length(), 0);
+//        sColored.setSpan(new ForegroundColorSpan(Color.WHITE), s.length() - 3, s.length(), 0);
+//        element.setTitle(sColored);
+
+//
+//        MenuItem reminderRegister = mNavigationView.getMenu().findItem(R.id.navigation_reminder_register_id);
+//        ViewGroup view = (ViewGroup) reminderRegister.getActionView();
+//
+//        if (null == badge) {
+//            badge = new QBadgeView(getApplicationContext()).bindTarget(view);
+//        }
+//        int count = 10;
+//        ShortcutBadger.applyCount(getApplicationContext(), count);
+//        badge.setBadgeNumber(count == 0 ? -1 : count);
+//        badge.setBadgeTextSize(14, true);
+//        badge.setBadgePadding(6, true);
+//        badge.setShowShadow(true);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
     }
 
     /**

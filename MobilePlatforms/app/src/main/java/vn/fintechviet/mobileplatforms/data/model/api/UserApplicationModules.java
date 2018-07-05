@@ -45,6 +45,10 @@ public class UserApplicationModules implements Serializable {
     @SerializedName("description")
     private String description;
 
+    @Expose
+    @SerializedName("sort")
+    private int sort;
+
     public String getUuid() {
         return uuid;
     }
@@ -83,5 +87,13 @@ public class UserApplicationModules implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getSort() {
+        return sort;
+    }
+
+    public void setSort(int sort) {
+        this.sort = sort;
     }
 }

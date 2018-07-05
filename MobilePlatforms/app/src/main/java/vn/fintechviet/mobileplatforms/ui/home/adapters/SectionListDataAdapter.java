@@ -55,12 +55,12 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
     }
 
     public SectionListDataAdapter(Context context, List<UserApplicationModules> itemsList) {
-//        Collections.sort(itemsList, new Comparator<UserApplicationModules>() {
-//            @Override
-//            public int compare(final UserApplicationModules object1, final UserApplicationModules object2) {
-//                return object1.getCode().compareTo(object2.getCode());
-//            }
-//        });
+        Collections.sort(itemsList, new Comparator<UserApplicationModules>() {
+            @Override
+            public int compare(final UserApplicationModules object1, final UserApplicationModules object2) {
+                return object1.getSort() - object2.getSort();
+            }
+        });
         this.itemsList = itemsList;
         this.mContext = context;
     }

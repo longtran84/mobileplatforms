@@ -165,6 +165,9 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
     }
 
     public void onNavigationMenuUpdateUserProfile(UserProfile userProfile) {
+        if (null == userProfile) {
+            return;
+        }
         final String currentUserName = userProfile.getUserName();
         if (!StringUtils.isBlank(currentUserName)) {
             userName.set(currentUserName);

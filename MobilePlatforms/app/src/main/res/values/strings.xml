@@ -141,7 +141,7 @@
     <string name="register_error">Register failed. Please check your info</string>
     <string name="register_error_warning">Warning</string>
     <string name="register_title_notification">Notification</string>
-    <string name="register_notification_successfully">You have been successfully registered! Now you can login to system.</string>
+    <string name="register_notification_successfully">You have been successfully registered!</string>
 
     <!--Check App Update-->
     <string name="button_text_message_update_apk">Update.</string>
@@ -204,12 +204,28 @@
     <string name="process_register_dialog_message_approval_confirm">Are you sure to approval?</string>
     <string name="process_register_dialog_message_reject_confirm">Are you sure to reject?</string>
 
+    <!--help detail-->
+    <string name="help_toolbar">Help detail</string>
 
     <!--messages detail-->
     <string name="messages_toolbar">Messages detail</string>
 
     <!--version manager-->
     <string name="check_for_update">Check your android version</string>
+
+    <!--setting-->
+    <string name="setting_system">Settings</string>
+    <string name="setting_about_phone_device_name">Device name</string>
+    <string name="setting_about_phone_model_number">Model number</string>
+    <string name="setting_about_phone_android_version">Android version</string>
+    <string name="setting_about_phone_status_serial_number">Serial number</string>
+    <string name="setting_about_phone_status_imei">IMEI infomation</string>
+
+    <string name="setting_about_phone_sim_serial_number">SIM serial number</string>
+    <string name="setting_about_phone_screen_density">Screen Density</string>
+    <string name="setting_about_phone_battery_percent">Battery Percent</string>
+    <string name="setting_about_phone_wifi_mac_address">Wifi Mac Address</string>
+
 
     <!--about fragment-->
     <string name="project_info">This sample app implements MVVM architecture using Dagger2, GreenDao, RxJava, FastAndroidNetworking and PlaceholderView</string>
@@ -264,6 +280,7 @@
     <string name="navigation_registration_process">Registration process</string>
     <string name="navigation_registration_lookup">Registration lookup</string>
     <string name="navigation_lookup_processing_registration">Lookup/Processing Registration</string>
+    <string name="navigation_setting">Setting</string>
 
     <string name="rationale_title">Permission required</string>
     <string name="rationale_message">we need permission for read <b>contact</b> and find your <b>location</b></string>

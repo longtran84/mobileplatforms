@@ -35,11 +35,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/appCompatTextViewVersionManager"
+                style="@style/TextStyle.Heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="10dp"
+                android:text="@string/version_manager" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewVersionManager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@+id/appCompatButtonCheckUpdate"
+                android:layout_below="@+id/appCompatTextViewVersionManager"
                 android:layout_margin="10dp"
                 android:scrollbars="none" />
 
@@ -47,9 +58,9 @@
                 android:id="@+id/appCompatButtonCheckUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
+                android:layout_margin="20dp"
                 android:background="@drawable/button_background_selector"
                 android:onClick="@{() -> versionManagerViewModel.onServerUpdateClick()}"
                 android:text="@string/check_for_update"

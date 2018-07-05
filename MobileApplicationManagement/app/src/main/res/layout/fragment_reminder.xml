@@ -38,18 +38,22 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/item_reminder_recycler_view_header_id"
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/app_compat_text_view_reminder"
+                style="@style/TextStyle.Heading"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:orientation="vertical" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="10dp"
+                android:text="@string/navigation_reminder_register" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewReminder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:layout_below="@+id/item_reminder_recycler_view_header_id"
+                android:layout_below="@+id/app_compat_text_view_reminder"
                 android:scrollbars="none" />
         </RelativeLayout>
 

@@ -113,7 +113,7 @@ public class SplashViewModel extends BaseViewModel<SplashNavigator> {
                 .subscribe(tedPermissionResult -> {
                             if (tedPermissionResult.isGranted()) {
                                 if (Constants.DEBUG_MODE_ENABLED) {
-                                    Toast.makeText(context, "Permission Granted", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(context, "Permission Granted", Toast.LENGTH_SHORT).show();
                                 }
                                 disposable = Observable
                                         .interval(1, TimeUnit.SECONDS, Schedulers.io())

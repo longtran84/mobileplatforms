@@ -16,6 +16,7 @@
 package vn.fintechviet.mobileplatforms.ui.version.management.adapters;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -33,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+import vn.fintechviet.mobileplatforms.BuildConfig;
 import vn.fintechviet.mobileplatforms.R;
 import vn.fintechviet.mobileplatforms.data.model.api.VersionManager;
 import vn.fintechviet.mobileplatforms.utils.JDateFormat;
@@ -99,6 +101,11 @@ public class VersionManagerViewerAdapter extends RecyclerView.Adapter<RecyclerVi
             if (null != articlesItem) {
                 if (!StringUtils.isBlank(articlesItem.getVersion())) {
                     conversationViewHolder.textViewVersion.setText(articlesItem.getVersion().trim());
+                    if(articlesItem.getVersion().trim().equalsIgnoreCase(BuildConfig.VERSION_NAME)){
+                        conversationViewHolder.itemImage.setColorFilter(0xFF32c24d, PorterDuff.Mode.SRC_ATOP);
+                    }else{
+                        conversationViewHolder.itemImage.setColorFilter(0x80000000, PorterDuff.Mode.SRC_ATOP);
+                    }
                 } else {
                     conversationViewHolder.textViewVersion.setText("");
                 }

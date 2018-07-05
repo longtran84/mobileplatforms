@@ -218,7 +218,7 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                setResult(Activity.RESULT_OK, new Intent());
+                //setResult(Activity.RESULT_OK, new Intent());
                 finish();
                 return true;
 
@@ -268,6 +268,12 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
                 .positiveColorRes(R.color.colorPrimary)
                 .onPositive(singleButtonCallback)
                 .build();
+    }
+
+    @Override
+    public void onBackPressedSupport() {
+        super.onBackPressedSupport();
+        finish();
     }
 }
 

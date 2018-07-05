@@ -18,6 +18,7 @@
 
 package vn.fintechviet.mobileplatforms.application.management.services;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -27,6 +28,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -44,6 +46,7 @@ import java.util.TimerTask;
 
 import vn.fintechviet.mobileplatforms.application.management.R;
 import vn.fintechviet.mobileplatforms.application.management.ui.main.MainActivity;
+import vn.fintechviet.mobileplatforms.application.management.ui.splash.SplashActivity;
 import vn.fintechviet.mobileplatforms.application.management.utils.AndroidAgentException;
 import vn.fintechviet.mobileplatforms.application.management.utils.Constants;
 import vn.fintechviet.mobileplatforms.application.management.utils.Preference;
@@ -75,7 +78,7 @@ public class FCMMessagingService extends FirebaseMessagingService {
      */
 
     private void sendNotification(String title, String messageBody, Bitmap image, FirebaseMessagingResponse firebaseMessaging) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, SplashActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         Bundle bundle = new Bundle();
         bundle.putInt("KEY_NAME_RESULT", 0);
@@ -108,7 +111,18 @@ public class FCMMessagingService extends FirebaseMessagingService {
         //notificationBuilder.setStyle(new NotificationCompat.InboxStyle());
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = title;
+            String description = messageBody;
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("default", name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            notificationManager.createNotificationChannel(channel);
+        }
         notificationManager.notify(new Random().nextInt(), notificationBuilder.build());
     }
 

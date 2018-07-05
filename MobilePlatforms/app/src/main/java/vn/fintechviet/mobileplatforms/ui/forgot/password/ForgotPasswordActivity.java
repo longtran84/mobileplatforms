@@ -78,6 +78,8 @@ public class ForgotPasswordActivity extends BaseActivity<ActivityForgotPasswordB
     @Override
     public void openLoginActivity() {
         Intent intent = LoginActivity.newIntent(ForgotPasswordActivity.this);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
         finish();
     }
@@ -90,6 +92,7 @@ public class ForgotPasswordActivity extends BaseActivity<ActivityForgotPasswordB
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setToolbar(getString(R.string.register_application));
         activityForgotPasswordBinding = getViewDataBinding();
         forgotPasswordViewModel.setNavigator(this);
         activityForgotPasswordBinding.appCompatTextViewForgotPasswordId.setPaintFlags(

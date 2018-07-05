@@ -211,6 +211,9 @@
     <string name="link_mindorks_repo">4. https://github.com/MindorksOpenSource</string>
     <string name="version">"Version"</string>
 
+    <!--help detail-->
+    <string name="help_toolbar">Help detail</string>
+
     <!--messages detail-->
     <string name="messages_toolbar">Messages detail</string>
 

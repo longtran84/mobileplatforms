@@ -311,6 +311,7 @@ public class Constants {
 	 */
 	public final class BundleConstant {
 		public static final String MESSAGES_DETAIL_ID = "MESSAGES_DETAIL_ID";
+		public static final String HELP_DETAIL_PARCELABLE = "HELP_DETAIL_PARCELABLE";
 	}
 
 	/**

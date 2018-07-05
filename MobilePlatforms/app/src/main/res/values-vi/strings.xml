@@ -121,7 +121,7 @@
     <string name="register_error">Đăng ký thất bại. Vui lòng kiểm tra thông tin của bạn.</string>
     <string name="register_error_warning">Cảnh báo</string>
     <string name="register_title_notification">Thông báo</string>
-    <string name="register_notification_successfully">Bạn đã đăng ký thành công! Bây giờ bạn có thể đăng nhập vào hệ thống.</string>
+    <string name="register_notification_successfully">Bạn đã đăng ký thành công!</string>
 
     <!--Check App Update-->
     <string name="button_text_message_update_apk">Cập nhật ứng dụng</string>
@@ -182,11 +182,27 @@
     <string name="process_register_dialog_message_approval_confirm">Bạn có chắc chắn phê duyệt không?</string>
     <string name="process_register_dialog_message_reject_confirm">Bạn có chắc chắn muốn từ chối không?</string>
 
+    <!--help detail-->
+    <string name="help_toolbar">Chi tiết</string>
+
     <!--messages detail-->
     <string name="messages_toolbar">Chi tiết thông báo</string>
 
     <!--version manager-->
     <string name="check_for_update">Kiểm tra và cập nhật phiên bản</string>
+
+    <!--setting-->
+    <string name="setting_system">Cài đặt</string>
+    <string name="setting_about_phone_device_name">Tên thiết bị</string>
+    <string name="setting_about_phone_model_number">Số hiệu đời máy</string>
+    <string name="setting_about_phone_android_version">Phiên bản Android</string>
+    <string name="setting_about_phone_status_serial_number">Số sê-ri</string>
+    <string name="setting_about_phone_status_imei">Thông tin IMEI</string>
+
+    <string name="setting_about_phone_sim_serial_number">Số sê-ri SIM</string>
+    <string name="setting_about_phone_screen_density">Độ phân giải màn hình</string>
+    <string name="setting_about_phone_battery_percent">Mức pin</string>
+    <string name="setting_about_phone_wifi_mac_address">Địa chỉ MAC của Wi-Fi</string>
 
     <!--about fragment-->
     <string name="project_info">This sample app implements MVVM architecture using Dagger2, GreenDao, RxJava, FastAndroidNetworking and PlaceholderView</string>
@@ -241,6 +257,7 @@
     <string name="navigation_registration_process">Xử lý đăng ký</string>
     <string name="navigation_registration_lookup">Tra cứu đăng ký</string>
     <string name="navigation_lookup_processing_registration">Tra cứu/Xử lý đăng ký</string>
+    <string name="navigation_setting">Cài đặt</string>
 
     <string name="rationale_title">Permission required</string>
     <string name="rationale_message">we need permission for read <b>contact</b> and find your <b>location</b></string>

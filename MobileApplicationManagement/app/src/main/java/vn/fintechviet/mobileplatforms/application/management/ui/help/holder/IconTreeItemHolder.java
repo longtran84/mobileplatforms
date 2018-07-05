@@ -26,7 +26,7 @@ import com.unnamed.b.atv.model.TreeNode;
 
 import vn.fintechviet.mobileplatforms.application.management.R;
 
-public class IconTreeItemHolder extends TreeNode.BaseNodeViewHolder<IconTreeItemHolder.IconTreeItem> {
+public class IconTreeItemHolder extends TreeNode.BaseNodeViewHolder<IconTreeItem> {
     private TextView tvValue;
     private PrintView arrowView;
 
@@ -39,17 +39,21 @@ public class IconTreeItemHolder extends TreeNode.BaseNodeViewHolder<IconTreeItem
         final LayoutInflater inflater = LayoutInflater.from(context);
         final View view = inflater.inflate(R.layout.layout_icon_node, null, false);
         tvValue = (TextView) view.findViewById(R.id.node_value);
-        tvValue.setText(value.text);
+        tvValue.setText(value.getText());
 
         final PrintView iconView = (PrintView) view.findViewById(R.id.icon);
-        iconView.setIconText(context.getResources().getString(value.icon));
+        iconView.setIconText(context.getResources().getString(value.getIcon()));
 
         arrowView = (PrintView) view.findViewById(R.id.arrow_icon);
 
         view.findViewById(R.id.btn_addFolder).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TreeNode newFolder = new TreeNode(new IconTreeItemHolder.IconTreeItem(R.string.ic_folder, "New Folder", true));
+                IconTreeItem iconTreeItemHolderIconTreeItem = new IconTreeItem();
+                iconTreeItemHolderIconTreeItem.setIcon(R.string.ic_folder);
+                iconTreeItemHolderIconTreeItem.setText("New Folder");
+                iconTreeItemHolderIconTreeItem.setLeaf(true);
+                TreeNode newFolder = new TreeNode(iconTreeItemHolderIconTreeItem);
                 getTreeView().addNode(node, newFolder);
             }
         });
@@ -66,7 +70,7 @@ public class IconTreeItemHolder extends TreeNode.BaseNodeViewHolder<IconTreeItem
             view.findViewById(R.id.btn_delete).setVisibility(View.GONE);
         }
 
-        arrowView.setVisibility(value.leaf ? View.GONE : View.VISIBLE);
+        arrowView.setVisibility(value.isLeaf() ? View.GONE : View.VISIBLE);
 
         return view;
     }
@@ -74,17 +78,5 @@ public class IconTreeItemHolder extends TreeNode.BaseNodeViewHolder<IconTreeItem
     @Override
     public void toggle(boolean active) {
         arrowView.setIconText(context.getResources().getString(active ? R.string.ic_keyboard_arrow_down : R.string.ic_keyboard_arrow_right));
-    }
-
-    public static class IconTreeItem {
-        public int icon;
-        public String text;
-        public boolean leaf;
-
-        public IconTreeItem(int icon, String text, boolean leaf) {
-            this.icon = icon;
-            this.text = text;
-            this.leaf = leaf;
-        }
     }
 }

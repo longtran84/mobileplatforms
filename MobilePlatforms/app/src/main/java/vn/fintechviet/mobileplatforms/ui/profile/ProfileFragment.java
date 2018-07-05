@@ -97,7 +97,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
         UserProfile userProfile = new UserProfile();
         userProfile.setFullName(fragmentProfileBinding.textViewFullName.getText().toString().trim());
         userProfile.setEmail(fragmentProfileBinding.textViewProfileEmail.getText().toString().trim());
-        userProfile.setPosition(fragmentProfileBinding.textViewProfileDepartment.getText().toString().trim());
+        userProfile.setPosition(fragmentProfileBinding.textViewProfilePosition.getText().toString().trim());
         userProfile.setDepartment(fragmentProfileBinding.textViewProfileDepartment.getText().toString().trim());
         userProfile.setPhone(fragmentProfileBinding.textViewProfilePhone.getText().toString().trim());
         userProfile.setMobile(fragmentProfileBinding.textViewProfileMobile.getText().toString().trim());

@@ -65,6 +65,11 @@
             android:icon="@drawable/ic_help_tutorial"
             android:title="@string/help_tutorial" />
         <item
+            android:id="@+id/navigation_setting_id"
+            android:checked="false"
+            android:icon="@drawable/settings_outline"
+            android:title="@string/navigation_setting" />
+        <item
             android:id="@+id/navigation_sign_out_id"
             android:checked="false"
             android:icon="@drawable/ic_sign_out"

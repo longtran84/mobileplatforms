@@ -17,6 +17,7 @@
 package vn.fintechviet.mobileplatforms.utils;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.os.PersistableBundle;
 
 import vn.fintechviet.mobileplatforms.BuildConfig;
@@ -311,6 +312,7 @@ public class Constants {
 	 */
 	public final class BundleConstant {
 		public static final String MESSAGES_DETAIL_ID = "MESSAGES_DETAIL_ID";
+		public static final String HELP_DETAIL_PARCELABLE = "HELP_DETAIL_PARCELABLE";
 	}
 
 	/**

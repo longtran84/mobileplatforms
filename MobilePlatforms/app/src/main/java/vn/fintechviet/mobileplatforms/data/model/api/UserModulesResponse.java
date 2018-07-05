@@ -33,6 +33,10 @@ public class UserModulesResponse implements Serializable {
     private String statusCode;
 
     @Expose
+    @SerializedName("sort")
+    private int sort;
+
+    @Expose
     @SerializedName("data")
     private List<UserModules> listData;
 
@@ -58,5 +62,13 @@ public class UserModulesResponse implements Serializable {
 
     public void setListData(List<UserModules> listData) {
         this.listData = listData;
+    }
+
+    public int getSort() {
+        return sort;
+    }
+
+    public void setSort(int sort) {
+        this.sort = sort;
     }
 }

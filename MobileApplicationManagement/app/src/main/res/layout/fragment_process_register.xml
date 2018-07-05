@@ -45,6 +45,15 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/TextStyle.Heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/navigation_registration_process" />
+
                 <LinearLayout
                     android:id="@+id/relative_layout_date_picker"
                     android:layout_width="match_parent"

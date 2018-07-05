@@ -55,6 +55,7 @@ import vn.fintechviet.mobileplatforms.databinding.ActivityMainBinding;
 import vn.fintechviet.mobileplatforms.databinding.LayoutNavigationHeaderMainBinding;
 import vn.fintechviet.mobileplatforms.ui.base.BaseActivity;
 import vn.fintechviet.mobileplatforms.ui.change.password.ChangePasswordFragment;
+import vn.fintechviet.mobileplatforms.ui.forgot.password.ForgotPasswordActivity;
 import vn.fintechviet.mobileplatforms.ui.help.HelpFragment;
 import vn.fintechviet.mobileplatforms.ui.home.HomeFragment;
 import vn.fintechviet.mobileplatforms.ui.login.LoginActivity;
@@ -63,6 +64,7 @@ import vn.fintechviet.mobileplatforms.ui.messages.MessagesFragment;
 import vn.fintechviet.mobileplatforms.ui.process.register.ProcessRegisterFragment;
 import vn.fintechviet.mobileplatforms.ui.profile.ProfileFragment;
 import vn.fintechviet.mobileplatforms.ui.reminder.ReminderFragment;
+import vn.fintechviet.mobileplatforms.ui.settings.SettingActivity;
 import vn.fintechviet.mobileplatforms.ui.version.management.VersionManagerFragment;
 import vn.fintechviet.mobileplatforms.ui.widget.BottomNavigationViewEx;
 import vn.fintechviet.mobileplatforms.utils.AppConstants;
@@ -361,6 +363,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                             showHideFragment(getTargetFragment(showFragment), getTargetFragment(hideFragment));
                             hideFragment = showFragment;
                             return true;
+                        case R.id.navigation_setting_id:
+                            Intent intent = SettingActivity.newIntent(MainActivity.this);
+                            startActivity(intent);
+                            return false;
                         case R.id.navigation_sign_out_id:
                             mMainViewModel.logout();
                             return true;

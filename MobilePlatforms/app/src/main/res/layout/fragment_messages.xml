@@ -79,6 +79,15 @@
 
             </RelativeLayout>
 
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/TextStyle.Heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="10dp"
+                android:text="@string/bottom_navigation_message" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewMessages"
                 android:layout_width="match_parent"

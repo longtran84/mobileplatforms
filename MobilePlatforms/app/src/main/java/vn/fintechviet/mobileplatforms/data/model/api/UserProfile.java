@@ -70,6 +70,12 @@ public class UserProfile implements Serializable {
     @SerializedName("orgTel")
     private String organizationTelephone;
 
+    @Expose
+    @SerializedName("orgEmail")
+
+    private String organizationEmail;
+
+
     public String getId() {
         return id;
     }
@@ -174,10 +180,6 @@ public class UserProfile implements Serializable {
         this.organizationEmail = organizationEmail;
     }
 
-    @Expose
-    @SerializedName("orgEmail")
-
-    private String organizationEmail;
 
 
 }
